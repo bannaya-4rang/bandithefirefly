@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bandi the Firefly</title>
+  <meta name="description" content="Bandi the Firefly — games, art, and handmade things. Portfolio coming soon.">
+  <style>
+    :root {
+      --bg: #0b1020;
+      --bg2: #131a33;
+      --ink: #e9ecf5;
+      --muted: #8a93b3;
+      --glow: #ffe27a;
+    }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; margin: 0; }
+    body {
+      background: radial-gradient(ellipse at 50% 100%, var(--bg2) 0%, var(--bg) 70%);
+      color: var(--ink);
+      font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      padding: 24px;
+    }
+    main {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      max-width: 560px;
+    }
+    .mark {
+      width: 72px; height: 72px;
+      margin: 0 auto 28px;
+      position: relative;
+    }
+    .mark .body {
+      position: absolute; inset: 0;
+      border-radius: 50%;
+      background: var(--glow);
+      box-shadow: 0 0 24px 6px rgba(255, 226, 122, .55), 0 0 80px 20px rgba(255, 226, 122, .18);
+      animation: pulse 3.2s ease-in-out infinite;
+    }
+    h1 {
+      font-size: clamp(28px, 6vw, 44px);
+      font-weight: 600;
+      letter-spacing: .02em;
+      margin: 0 0 12px;
+    }
+    h1 small {
+      display: block;
+      font-size: .42em;
+      font-weight: 400;
+      color: var(--muted);
+      letter-spacing: .28em;
+      text-transform: uppercase;
+      margin-top: 10px;
+    }
+    p {
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.6;
+      margin: 0;
+    }
+    .ko { font-size: 14px; margin-top: 6px; opacity: .8; }
+    footer {
+      position: fixed; bottom: 18px; left: 0; right: 0;
+      text-align: center;
+      font-size: 12px;
+      color: var(--muted);
+      opacity: .6;
+      z-index: 2;
+    }
+    /* drifting fireflies */
+    .field { position: fixed; inset: 0; z-index: 1; pointer-events: none; }
+    .fly {
+      position: absolute;
+      width: 4px; height: 4px;
+      border-radius: 50%;
+      background: var(--glow);
+      box-shadow: 0 0 8px 2px rgba(255, 226, 122, .6);
+      opacity: 0;
+      animation: drift var(--d) linear infinite, blink var(--b) ease-in-out infinite;
+      animation-delay: var(--delay);
+      left: var(--x); top: var(--y);
+    }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: .95; }
+      50% { transform: scale(1.08); opacity: 1; }
+    }
+    @keyframes blink {
+      0%, 100% { opacity: 0; }
+      40%, 60% { opacity: .9; }
+    }
+    @keyframes drift {
+      from { transform: translate(0, 0); }
+      to { transform: translate(var(--dx), var(--dy)); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .fly, .mark .body { animation: none; opacity: .7; }
+    }
+  </style>
+</head>
+<body>
+  <div class="field" id="field"></div>
+
+  <main>
+    <div class="mark"><div class="body"></div></div>
+    <h1>Bandi the Firefly<small>games · art · handmade</small></h1>
+    <p>A portfolio is taking shape here. Come back soon.</p>
+    <p class="ko">반디 — 한국어로 반딧불이라는 뜻이에요.</p>
+  </main>
+
+  <footer>bandithefirefly.com</footer>
+
+  <script>
+    (function () {
+      var field = document.getElementById('field');
+      var n = 28;
+      for (var i = 0; i < n; i++) {
+        var f = document.createElement('span');
+        f.className = 'fly';
+        f.style.setProperty('--x', Math.random() * 100 + 'vw');
+        f.style.setProperty('--y', Math.random() * 100 + 'vh');
+        f.style.setProperty('--dx', (Math.random() * 160 - 80) + 'px');
+        f.style.setProperty('--dy', (Math.random() * 120 - 60) + 'px');
+        f.style.setProperty('--d', (18 + Math.random() * 22) + 's');
+        f.style.setProperty('--b', (3 + Math.random() * 5) + 's');
+        f.style.setProperty('--delay', (-Math.random() * 20) + 's');
+        field.appendChild(f);
+      }
+    })();
+  </script>
+</body>
+</html>
