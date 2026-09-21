@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sticks</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;700&family=Patrick+Hand&display=swap">
+<style>
+:root{--paper:#FFFFFF;--fill:#EBEBEB;--ink:#000000;--mute:#7A7A7A;--dim:#B5B5B5;
+  --ui:"Noto Sans","DejaVu Sans","Helvetica Neue",Arial,sans-serif;--hand:"Patrick Hand","Comic Sans MS",cursive}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--ui);font-size:16px;line-height:1.5}
+a{color:inherit;text-decoration:none}
+a:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+img{display:block;max-width:100%}
+.wob{filter:url(#wobble)}
+.box{background:var(--fill);border:2px solid var(--ink)}
+
+/* ---- top: the VN scene ---- */
+.scene{position:relative;background:#000;color:#fff;overflow:hidden}
+.scene img{width:100%;height:auto}
+.scene .dlg{position:relative;padding:12px 2% 2%;background:#000;margin-top:-2%}
+.namebox{display:inline-block;background:var(--fill);color:var(--ink);border:2px solid var(--ink);padding:6px 40px;font-size:clamp(16px,1.8vw,26px);margin:0 0 -2px 6%;position:relative;z-index:2}
+.textbox{background:var(--fill);color:var(--ink);border:2px solid var(--ink);padding:clamp(14px,2.4vw,32px) 20% clamp(20px,3vw,40px);font-size:clamp(15px,1.7vw,24px);line-height:1.45;min-height:0}
+.textbox b{font-weight:700}
+.vnmenu{display:flex;gap:clamp(10px,2.4vw,34px);justify-content:center;flex-wrap:wrap;padding:6px 0 10px;font-size:clamp(11px,1.15vw,16px);color:var(--dim)}
+.vnmenu a[aria-current]{color:#fff}
+.vnmenu a:hover{color:#fff}
+
+/* ---- hallway nav ---- */
+.hall{position:relative;border-top:2px solid var(--ink);border-bottom:2px solid var(--ink)}
+.hall img{width:100%}
+.hot{position:absolute;display:block}
+.hot .e{position:absolute;left:50%;top:-14%;transform:translateX(-50%);width:clamp(34px,5vw,64px);height:clamp(34px,5vw,64px);border-radius:50%;background:#fff;border:3px solid #8a8a8a;display:grid;place-items:center;font-weight:700;font-size:clamp(16px,2.4vw,30px);opacity:0;transition:opacity .15s}
+.hot .e::after{content:"";position:absolute;left:30%;bottom:-16px;border:9px solid transparent;border-top-color:#8a8a8a}
+.hot .lbl{position:absolute;left:50%;bottom:-10%;transform:translateX(-50%);font-family:var(--hand);font-size:clamp(14px,1.8vw,24px);background:#fff;border:2px solid var(--ink);padding:2px 12px;white-space:nowrap}
+.hot:hover .e,.hot:focus-visible .e{opacity:1}
+.hint{position:absolute;left:2%;top:3%;font-family:var(--hand);font-size:clamp(13px,1.5vw,20px);color:var(--mute)}
+
+/* ---- rooms ---- */
+.room{padding:clamp(28px,5vw,72px) clamp(20px,5vw,72px);border-bottom:2px solid var(--ink)}
+.room h2{font-family:var(--hand);font-weight:400;font-size:clamp(28px,4vw,52px);margin:0 0 18px;line-height:1}
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(20px,4vw,56px);align-items:center}
+.frame{background:var(--fill);border:2px solid var(--ink);padding:clamp(10px,1.6vw,22px)}
+.frame img{width:100%;aspect-ratio:1;object-fit:cover;border:2px solid var(--ink)}
+.frame figcaption{font-family:var(--hand);margin-top:8px;color:var(--mute)}
+.say{background:var(--fill);border:2px solid var(--ink);padding:18px 22px;font-size:clamp(15px,1.4vw,19px);line-height:1.5;position:relative;margin-top:14px}
+.say .who{position:absolute;top:-16px;left:18px;background:var(--fill);border:2px solid var(--ink);padding:0 14px;font-size:14px}
+.btn{display:inline-block;margin-top:16px;border:2px solid var(--ink);background:#fff;padding:8px 18px;font-family:var(--hand);font-size:18px}
+.btn:hover{background:var(--fill)}
+
+/* lockers = games */
+.lockers{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:0;border:2px solid var(--ink);background:#fff}
+.locker{border-right:2px solid var(--ink);padding:18px 18px 22px;min-height:240px;display:flex;flex-direction:column;gap:6px;background:var(--fill)}
+.locker:last-child{border-right:0}
+.locker .num{font-family:var(--hand);font-size:22px}
+.locker h3{margin:6px 0 0;font-size:17px;font-weight:700}
+.locker .meta{font-size:12.5px;color:var(--mute)}
+.locker p{margin:4px 0 0;font-size:14px}
+.locker .tag{margin-top:auto;font-family:var(--hand);font-size:15px;border:2px solid var(--ink);background:#fff;padding:2px 10px;align-self:flex-start}
+
+/* seeds = sky */
+.sky{position:relative;background:#000;color:#fff;border-bottom:2px solid var(--ink)}
+.sky img{width:100%;opacity:.95}
+.sky .over{position:absolute;inset:0;display:flex;align-items:flex-start;padding:clamp(20px,5vw,72px)}
+.sky .over > div{background:rgba(0,0,0,.82);padding:18px 22px 22px;max-width:56ch}
+.sky h2{font-family:var(--hand);font-weight:400;font-size:clamp(28px,4vw,52px);margin:0 0 10px;line-height:1}
+.sky p{max-width:48ch;color:#ddd;margin:0}
+.sky .btn{background:#000;color:#fff;border-color:#fff}
+
+/* poster = about */
+.poster{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(20px,4vw,56px);align-items:center}
+.poster img{border:2px solid var(--ink)}
+footer{padding:14px clamp(20px,5vw,72px) 26px;color:var(--dim);font-size:12px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+@media (max-width:820px){.two,.poster{grid-template-columns:1fr}.textbox{padding-inline:6%}.namebox{margin-left:3%}}
+</style>
+<style>
+.page{max-width:1100px;margin:0 auto;padding:0 clamp(16px,4vw,40px)}
+.scene .textbox{padding-inline:12%}
+.line{display:grid;grid-template-columns:minmax(0,1fr);gap:18px;margin:26px 0}
+.line.with{grid-template-columns:minmax(0,3fr) minmax(0,2fr);align-items:start}
+.line.with.flip{grid-template-columns:minmax(0,2fr) minmax(0,3fr)}
+.line.with.flip .frame{order:-1}
+.say{margin-top:22px}
+.say.cont{margin-top:10px}
+.say .next{position:absolute;right:12px;bottom:6px;font-size:12px;color:var(--mute)}
+.chapter{font-family:var(--hand);font-size:clamp(22px,3vw,34px);margin:40px 0 4px;display:flex;align-items:center;gap:14px}
+.chapter::after{content:"";flex:1;height:2px;background:var(--ink)}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.frame img.tall{aspect-ratio:3/4}
+.frame img.wide{aspect-ratio:4/3}
+@media (max-width:820px){.line.with,.line.with.flip{grid-template-columns:1fr}.line.with.flip .frame{order:0}}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <filter id="wobble"><feTurbulence type="fractalNoise" baseFrequency="0.012" numOctaves="2" seed="7" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="4"/></filter>
+</svg>
+
+<section class="scene">
+  <img src="img/desk.png" alt="A hand-drawn desk with a drawer, and a shelf on the wall">
+  <div class="dlg">
+    <div class="namebox wob">Bandi</div>
+    <div class="textbox wob">I like skinning sticks. This is the desk where it happens. <b>Three layers, one knife, and whatever my head does in the meantime.</b></div>
+    <nav class="vnmenu">
+      <a href="index.html">Home</a><a href="#" aria-current="page">Sticks</a><a href="seeds.html">Seeds</a><a href="index.html#games">Games</a><a href="about.html">About</a>
+    </nav>
+  </div>
+</section>
+
+<div class="page">
+
+<h2 class="chapter">Three layers</h2>
+<div class="line with">
+  <div>
+    <div class="say wob"><span class="who">Bandi</span>When you look closely, you can see that most sticks have multiple layers of skin. The outermost layer is usually the roughest and sometimes partially comes off when you wash and rub the stick. They usually have the most dirt in it and are relatively easy to remove, so I usually remove them first when I skin a stick. I can also be less careful when removing that layer since there's still a layer underneath.<span class="next">▼</span></div>
+    <div class="say wob cont"><span class="who">Bandi</span>Then, there's the middle layer, which is smoother than the outermost layer, but rougher than the innermost layer. It would be the layer that's still green if you picked a fresh stick to skin. When you skin this layer, you have to be more careful, since if you're not careful, you might accidentally damage the inner layer, which you want to keep. Sometimes this layer gives off an aroma when freshly peeled. If it's a flower tree like a cherry tree, then it might smell like the flowers. For some sticks, this layer gets sticky when in contact with water. A stick from my Chinese elm tree would be an example of that.<span class="next">▼</span></div>
+    <div class="say wob cont"><span class="who">Bandi</span>Lastly, there's the innermost layer. I'm actually not very sure if this layer really classifies as skin, since unlike the other layers, it does not exactly have a clear distinction/separation from the center. Sometimes the other layers can be peeled off by hand if the conditions are right, but not this layer. Anyways, usually I like to keep this layer since it's shiny and pretty. Unfortunately, I don't always get it right and it sometimes ends up peeled in some parts, usually people cannot notice the difference very well though since it's quite similar to the center part. Some sticks also don't have this layer, though it could just be that I haven't noticed them in those sticks.</div>
+  </div>
+  <figure class="frame wob" style="margin:22px 0 0">
+    <img class="tall" src="img/knife.jpg" alt="A carving knife beside a half-peeled stick on a bamboo board">
+    <figcaption>the whole kit</figcaption>
+  </figure>
+</div>
+
+<h2 class="chapter">Different sticks</h2>
+<div class="line with flip">
+  <figure class="frame wob" style="margin:22px 0 0">
+    <img class="tall" src="img/texture.jpg" alt="Close-up of peeled sticks in different colors and grains">
+    <figcaption>cherry, elm, and a few I can't name</figcaption>
+  </figure>
+  <div>
+    <div class="say wob"><span class="who">Bandi</span>Different sticks have different textures. They vary in color, hardness, flexibility, roughness of the bark, and even their scent. By looking at the stick, it's possible to guess approximately what kind of tree it came from. For example, cherry tree sticks generally have a reddish brown skin and have a smoother bark, they also give off this aroma that smells like its flowers. Sticks from the elm tree I own has harder skin and drops some dust when skinned dry. They also smell different when cut.</div>
+    <div class="pair" style="margin-top:22px">
+      <figure class="frame wob" style="margin:0"><img class="tall" src="img/shavings.jpg" alt="A jar of curled wood shavings"><figcaption>what comes off a fresh stick</figcaption></figure>
+      <figure class="frame wob" style="margin:0"><img class="tall" src="img/fluff.jpg" alt="Fine wood fibres piled on a block"><figcaption>what comes off a dry one</figcaption></figure>
+    </div>
+  </div>
+</div>
+
+<h2 class="chapter">How it started</h2>
+<div class="line with">
+  <div>
+    <div class="say wob"><span class="who">Bandi</span>I first started this activity when one day, I found a cool stick on the ground. So I thought to myself, "ooh this stick looks cool, Imma bring it home", and I did. When I brought it home, it was a bit dirty, and parts of the skin kept falling off when I washed it, so I just decided to remove the skin entirely. It was quite fun, though I didn't think much of it at the time.<span class="next">▼</span></div>
+    <div class="say wob cont"><span class="who">Bandi</span>A while later, I found another cool stick near our house and skinned it too. Then more cool sticks, and eventually it became a hobby. I think it's a nice hobby, you can find sticks almost anywhere and all it takes is a carving knife to skin them. It's also a nice way to connect to nature since you'd have to go outside to get the sticks, and to make art out of nature's creation.</div>
+  </div>
+  <figure class="frame wob" style="margin:22px 0 0">
+    <img class="tall" src="img/vase.jpg" alt="A tall glass vase full of peeled sticks">
+    <figcaption>where they end up</figcaption>
+  </figure>
+</div>
+
+<h2 class="chapter">What happens in my head</h2>
+<div class="line">
+  <div class="say wob"><span class="who">Bandi</span>It's quite relaxing. I like to do it sometimes when I need to take a break from my devices, or just whenever I feel like it. I think it's a bit meditative, I can just let my thoughts wander around and relax when I skin the sticks. When I skin the sticks, I enter a state where my brain only focuses on one thought at a time, and all outside distractions get ignored automatically. My emotions become dimmed, and my logic becomes rather simple, but clearer at the same time.<span class="next">▼</span></div>
+  <div class="say wob cont"><span class="who">Bandi</span>A lot of my thoughts would be random ideas that pop up from time to time, some of which become "seeds" for a game idea or something else. Other thoughts also include reflections on my past actions and memories, or just random questions. Sometimes, I would be able to think of an answer to a question that I otherwise would've been unable to answer. Sometimes, truth lies in the simpler things we normally overlook.</div>
+  <div style="margin-top:8px"><a class="btn wob" href="seeds.html">Some of those thoughts became seeds →</a></div>
+</div>
+
+</div>
+
+<footer><span>bandithefirefly.com</span><span>반디 · firefly</span></footer>
+
+</body>
+</html>
