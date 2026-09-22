@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>PC vs. Virus</title>
+<title>Error 404 (tabletop)</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;700&family=Patrick+Hand&display=swap">
 <style>
 :root{--paper:#FFFFFF;--fill:#EBEBEB;--ink:#000000;--mute:#7A7A7A;--dim:#B5B5B5;
@@ -19,7 +19,7 @@ img{display:block;max-width:100%}
 /* ---- top: the VN scene ---- */
 .scene{position:relative;background:#000;color:#fff;overflow:hidden}
 .scene img{width:100%;height:auto}
-.scene .dlg{position:relative;padding:12px 2% 2%;background:#000;margin-top:-2%}
+.scene .dlg{position:relative;padding:12px 2% 3%;background:#000;margin-top:-2%}
 .namebox{display:inline-block;background:var(--fill);color:var(--ink);border:2px solid var(--ink);padding:6px 40px;font-size:clamp(16px,1.8vw,26px);margin:0 0 -2px 6%;position:relative;z-index:2}
 .textbox{background:var(--fill);color:var(--ink);border:2px solid var(--ink);padding:clamp(14px,2.4vw,32px) 20% clamp(20px,3vw,40px);font-size:clamp(15px,1.7vw,24px);line-height:1.45;min-height:0}
 .textbox b{font-weight:700}
@@ -102,14 +102,22 @@ footer{padding:14px clamp(20px,5vw,72px) 26px;color:var(--dim);font-size:12px;di
 .pieces img{width:120px;image-rendering:pixelated;border:2px solid var(--ink);background:#fff}
 .scene img.board{width:min(100%,560px);margin:0 auto;display:block}
 </style>
+<style>
+.topnav{position:fixed;top:0;left:0;right:0;z-index:50;background:#000;display:flex;justify-content:center;gap:clamp(14px,3vw,40px);padding:12px 16px;font-size:clamp(13px,1.2vw,17px);color:var(--dim);border-bottom:2px solid #000}
+.topnav a[aria-current]{color:#fff;font-weight:700}
+.topnav a:hover{color:#fff}
+body{padding-top:48px}
+html{scroll-padding-top:56px}
+</style>
 </head>
 <body>
+<nav class="topnav"><a href="index.html">Home</a><a href="sticks.html">Sticks</a><a href="seeds.html">Seeds</a><a href="index.html#games" aria-current="page">Games</a><a href="about.html">About</a></nav>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <filter id="wobble"><feTurbulence type="fractalNoise" baseFrequency="0.012" numOctaves="2" seed="7" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="4"/></filter>
 </svg>
-<section class="scene"><video controls playsinline muted poster="img/board_play_poster.jpg" src="video/board_play.mp4" style="width:100%;display:block;background:#000"></video><div class="dlg"><div class="namebox wob">Bandi</div><div class="textbox wob">A hacker's virus is loose on a college student's PC. Two players, one board. <b>The virus wants three blocks. The PC wants the virus gone.</b> Every tile you lay has to keep the circuit legal.</div><nav class="vnmenu"><a href="index.html">Home</a><a href="sticks.html">Sticks</a><a href="seeds.html">Seeds</a><a href="index.html#games" aria-current="page">Games</a><a href="about.html">About</a></nav></div></section>
+<section class="scene"><video controls playsinline muted poster="img/board_play_poster.jpg" src="video/board_play.mp4" style="width:100%;display:block;background:#000"></video><div class="dlg"><div class="namebox wob">Bandi</div><div class="textbox wob">A hacker's virus is loose on a college student's PC. Two players, one board. <b>The virus wants three blocks. The PC wants the virus gone.</b> Every tile you lay has to keep the circuit legal.</div></div></section>
 <div class="page">
-<div class="spec wob"><div><span class="k">type</span><br><span class="v">analog · board game</span></div><div><span class="k">players</span><br><span class="v">2 (PC vs Virus)</span></div><div><span class="k">board</span><br><span class="v">9 × 9, start from center</span></div><div><span class="k">tiles</span><br><span class="v">54 drawn &amp; printed</span></div><div><span class="k">my part</span><br><span class="v">rules · tile art · board</span></div></div>
+<div class="spec wob"><div><span class="k">when</span><br><span class="v">June 2026</span></div><div><span class="k">type</span><br><span class="v">analog · board game</span></div><div><span class="k">players</span><br><span class="v">2 (PC vs Virus)</span></div><div><span class="k">board</span><br><span class="v">9 × 9, start from center</span></div><div><span class="k">tiles</span><br><span class="v">54 drawn &amp; printed</span></div><div><span class="k">my part</span><br><span class="v">rules · tile art (Magma) · board</span></div></div>
 
 <h2 class="chapter">What it is</h2>
 <div class="line"><div>

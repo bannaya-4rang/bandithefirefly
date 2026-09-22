@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Fighting Virus</title>
+<title>Error 404 (videogame)</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;700&family=Patrick+Hand&display=swap">
 <style>
 :root{--paper:#FFFFFF;--fill:#EBEBEB;--ink:#000000;--mute:#7A7A7A;--dim:#B5B5B5;
@@ -19,7 +19,7 @@ img{display:block;max-width:100%}
 /* ---- top: the VN scene ---- */
 .scene{position:relative;background:#000;color:#fff;overflow:hidden}
 .scene img{width:100%;height:auto}
-.scene .dlg{position:relative;padding:12px 2% 2%;background:#000;margin-top:-2%}
+.scene .dlg{position:relative;padding:12px 2% 3%;background:#000;margin-top:-2%}
 .namebox{display:inline-block;background:var(--fill);color:var(--ink);border:2px solid var(--ink);padding:6px 40px;font-size:clamp(16px,1.8vw,26px);margin:0 0 -2px 6%;position:relative;z-index:2}
 .textbox{background:var(--fill);color:var(--ink);border:2px solid var(--ink);padding:clamp(14px,2.4vw,32px) 20% clamp(20px,3vw,40px);font-size:clamp(15px,1.7vw,24px);line-height:1.45;min-height:0}
 .textbox b{font-weight:700}
@@ -92,8 +92,18 @@ footer{padding:14px clamp(20px,5vw,72px) 26px;color:var(--dim);font-size:12px;di
 .say .next{position:absolute;right:12px;bottom:6px;font-size:12px;color:var(--mute)}
 @media (max-width:820px){.line{grid-template-columns:1fr}}
 </style>
+<style>
+.topnav{position:fixed;top:0;left:0;right:0;z-index:50;background:#000;display:flex;justify-content:center;gap:clamp(14px,3vw,40px);padding:12px 16px;font-size:clamp(13px,1.2vw,17px);color:var(--dim);border-bottom:2px solid #000}
+.topnav a[aria-current]{color:#fff;font-weight:700}
+.topnav a:hover{color:#fff}
+body{padding-top:48px}
+html{scroll-padding-top:56px}
+</style>
 </head>
 <body>
+<nav class="topnav">
+      <a href="index.html">Home</a><a href="sticks.html">Sticks</a><a href="seeds.html">Seeds</a><a href="index.html#games" aria-current="page">Games</a><a href="about.html">About</a>
+    </nav>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <filter id="wobble"><feTurbulence type="fractalNoise" baseFrequency="0.012" numOctaves="2" seed="7" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="4"/></filter>
@@ -104,17 +114,15 @@ footer{padding:14px clamp(20px,5vw,72px) 26px;color:var(--dim);font-size:12px;di
   <div class="dlg">
     <div class="namebox wob">Bandi</div>
     <div class="textbox wob">Your PC has a virus. Tech support arrives in ten minutes. Until then it's just you, the pop-ups, and a password you can't remember. <b>I designed it, coded it, and drew every pixel of it.</b></div>
-    <nav class="vnmenu">
-      <a href="index.html">Home</a><a href="sticks.html">Sticks</a><a href="seeds.html">Seeds</a><a href="index.html#games" aria-current="page">Games</a><a href="about.html">About</a>
-    </nav>
+    
   </div>
 </section>
 
 <div class="page">
 
 <div class="spec wob">
-  <div><span class="k">year</span><br><span class="v">2026</span></div>
-  <div><span class="k">engine</span><br><span class="v">Unity</span></div>
+  <div><span class="k">year</span><br><span class="v">Sept 2026</span></div>
+  <div><span class="k">engine</span><br><span class="v">Unity · C#</span></div>
   <div><span class="k">team</span><br><span class="v">solo</span></div>
   <div><span class="k">my part</span><br><span class="v">design · code · art</span></div>
   <div><span class="k">status</span><br><span class="v">in progress</span></div>
@@ -133,7 +141,7 @@ footer{padding:14px clamp(20px,5vw,72px) 26px;color:var(--dim);font-size:12px;di
 <div class="line">
   <div>
     <div class="say wob"><span class="who">Bandi</span>All of it. The desktop itself, the window system, the folders and files, the virus that corrupts them one by one, the pop-ups and the timing of when they show up. And the pop-up art, which is supposed to look like it was drawn by someone who really wants you to click.</div>
-    <div class="say wob" style="margin-top:10px"><span class="who">Bandi</span>It's the same idea as my board game, PC vs. Virus, but this time you're alone and the virus doesn't take turns.</div>
+    <div class="say wob" style="margin-top:10px"><span class="who">Bandi</span>It's the videogame version of my board game of the same name, but this time you're alone and the virus doesn't take turns.</div>
   </div>
   <figure class="frame wob" style="margin:22px 0 0"><img class="wide" src="img/virus_folder.jpg" alt="A folder window full of files with a pop-up over it"><figcaption>the pop-ups don't wait for you</figcaption></figure>
 </div>

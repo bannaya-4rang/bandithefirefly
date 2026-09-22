@@ -19,7 +19,7 @@ img{display:block;max-width:100%}
 /* ---- top: the VN scene ---- */
 .scene{position:relative;background:#000;color:#fff;overflow:hidden}
 .scene img{width:100%;height:auto}
-.scene .dlg{position:relative;padding:12px 2% 2%;background:#000;margin-top:-2%}
+.scene .dlg{position:relative;padding:12px 2% 3%;background:#000;margin-top:-2%}
 .namebox{display:inline-block;background:var(--fill);color:var(--ink);border:2px solid var(--ink);padding:6px 40px;font-size:clamp(16px,1.8vw,26px);margin:0 0 -2px 6%;position:relative;z-index:2}
 .textbox{background:var(--fill);color:var(--ink);border:2px solid var(--ink);padding:clamp(14px,2.4vw,32px) 20% clamp(20px,3vw,40px);font-size:clamp(15px,1.7vw,24px);line-height:1.45;min-height:0}
 .textbox b{font-weight:700}
@@ -74,8 +74,18 @@ img{display:block;max-width:100%}
 footer{padding:14px clamp(20px,5vw,72px) 26px;color:var(--dim);font-size:12px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
 @media (max-width:820px){.two,.poster{grid-template-columns:1fr}.textbox{padding-inline:6%}.namebox{margin-left:3%}}
 </style>
+<style>
+.topnav{position:fixed;top:0;left:0;right:0;z-index:50;background:#000;display:flex;justify-content:center;gap:clamp(14px,3vw,40px);padding:12px 16px;font-size:clamp(13px,1.2vw,17px);color:var(--dim);border-bottom:2px solid #000}
+.topnav a[aria-current]{color:#fff;font-weight:700}
+.topnav a:hover{color:#fff}
+body{padding-top:48px}
+html{scroll-padding-top:56px}
+</style>
 </head>
 <body>
+<nav class="topnav">
+      <a href="#" aria-current="page">Home</a><a href="sticks.html">Sticks</a><a href="seeds.html">Seeds</a><a href="#games">Games</a><a href="about.html">About</a>
+    </nav>
 
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -88,9 +98,7 @@ footer{padding:14px clamp(20px,5vw,72px) 26px;color:var(--dim);font-size:12px;di
   <div class="dlg">
     <div class="namebox wob">Bandi</div>
     <div class="textbox wob">This is where my games live. Also the ones that never got finished, the sticks I peel when I'm thinking, and the ideas that haven't decided what they are yet. <b>The sign is real, by the way. I'm still building.</b></div>
-    <nav class="vnmenu">
-      <a href="#" aria-current="page">Home</a><a href="sticks.html">Sticks</a><a href="seeds.html">Seeds</a><a href="#games">Games</a><a href="about.html">About</a>
-    </nav>
+    
   </div>
 </section>
 
@@ -114,11 +122,11 @@ footer{padding:14px clamp(20px,5vw,72px) 26px;color:var(--dim);font-size:12px;di
 <section class="room" id="games">
   <h2>Games</h2>
   <div class="lockers wob">
-    <a class="locker" href="game-virus.html"><span class="num">01</span><h3>Fighting Virus</h3><span class="meta">unity · solo · design, code, art</span><p>Your PC has a virus and tech support is ten minutes away. Find the password before the files are gone.</p><span class="tag">in progress · video</span></a>
-    <a class="locker" href="game-board.html"><span class="num">02</span><h3>PC vs. Virus</h3><span class="meta">analog · 2 players · 54 tiles</span><p>A hacker's virus spreads through red wires; you hunt it down the blue ones. Every tile you place has to keep the circuit legal.</p><span class="tag">playable · printed</span></a>
-    <a class="locker" href="game-vn.html"><span class="num">03</span><h3>Where Abandoned Ideas Go</h3><span class="meta">ren'py · solo · CAS project</span><p>A point-and-click visual novel about the place where abandoned games, assets and ideas go. You are looking at it.</p><span class="tag">under construction</span></a>
-    <a class="locker" href="game-shooter.html"><span class="num">04</span><h3>Untitled Horror Game</h3><span class="meta">unreal engine 5 · team of 3 · 5 days</span><p>Find the weapon before night falls, then survive. I built the level and the spawn system.</p><span class="tag">playable · video</span></a>
-    <a class="locker" href="game-minigame.html"><span class="num">05</span><h3>Morning Routine</h3><span class="meta">snap · solo · 2024</span><p>Get ready for work before the timer runs out. Based on the mornings my mom can't find her phone.</p><span class="tag">printed · playable</span></a>
+    <a class="locker" href="game-virus.html"><span class="num">01</span><h3>Error 404: Your File Has Been Corrupted <br><small style="font-weight:400;color:var(--mute)">videogame version</small></h3><span class="meta">sept 2026 · unity · solo · design, code, art</span><p>Your PC has a virus and tech support is ten minutes away. Find the password before the files are gone.</p><span class="tag">in progress · video</span></a>
+    <a class="locker" href="game-board.html"><span class="num">02</span><h3>Error 404: Your File Has Been Corrupted <br><small style="font-weight:400;color:var(--mute)">tabletop version</small></h3><span class="meta">june 2026 · analog · 2 players · 54 tiles</span><p>A hacker's virus spreads through red wires; you hunt it down the blue ones. Every tile you place has to keep the circuit legal.</p><span class="tag">playable · printed</span></a>
+    <a class="locker" href="game-vn.html"><span class="num">03</span><h3>Where Abandoned Ideas Go</h3><span class="meta">oct 2025 – now · ren'py · solo · CAS project</span><p>A point-and-click visual novel about the place where abandoned games, assets and ideas go. You are looking at it.</p><span class="tag">under construction</span></a>
+    <a class="locker" href="game-shooter.html"><span class="num">04</span><h3>Untitled First and Third Person Horror Game</h3><span class="meta">july 2025 · unreal engine 5 · team of 3 · 5 days</span><p>Find the weapon before night falls, then survive. I built the level and the spawn system.</p><span class="tag">playable · video</span></a>
+    <a class="locker" href="game-minigame.html"><span class="num">05</span><h3>Morning Routine</h3><span class="meta">2024 · snap! · solo</span><p>Get ready for work before the timer runs out. Based on the mornings my mom can't find her phone.</p><span class="tag">playable</span></a>
   </div>
 </section>
 

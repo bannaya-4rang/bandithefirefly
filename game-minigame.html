@@ -19,7 +19,7 @@ img{display:block;max-width:100%}
 /* ---- top: the VN scene ---- */
 .scene{position:relative;background:#000;color:#fff;overflow:hidden}
 .scene img{width:100%;height:auto}
-.scene .dlg{position:relative;padding:12px 2% 2%;background:#000;margin-top:-2%}
+.scene .dlg{position:relative;padding:12px 2% 3%;background:#000;margin-top:-2%}
 .namebox{display:inline-block;background:var(--fill);color:var(--ink);border:2px solid var(--ink);padding:6px 40px;font-size:clamp(16px,1.8vw,26px);margin:0 0 -2px 6%;position:relative;z-index:2}
 .textbox{background:var(--fill);color:var(--ink);border:2px solid var(--ink);padding:clamp(14px,2.4vw,32px) 20% clamp(20px,3vw,40px);font-size:clamp(15px,1.7vw,24px);line-height:1.45;min-height:0}
 .textbox b{font-weight:700}
@@ -92,14 +92,22 @@ footer{padding:14px clamp(20px,5vw,72px) 26px;color:var(--dim);font-size:12px;di
 .say .next{position:absolute;right:12px;bottom:6px;font-size:12px;color:var(--mute)}
 @media (max-width:820px){.line{grid-template-columns:1fr}}
 </style>
+<style>
+.topnav{position:fixed;top:0;left:0;right:0;z-index:50;background:#000;display:flex;justify-content:center;gap:clamp(14px,3vw,40px);padding:12px 16px;font-size:clamp(13px,1.2vw,17px);color:var(--dim);border-bottom:2px solid #000}
+.topnav a[aria-current]{color:#fff;font-weight:700}
+.topnav a:hover{color:#fff}
+body{padding-top:48px}
+html{scroll-padding-top:56px}
+</style>
 </head>
 <body>
+<nav class="topnav"><a href="index.html">Home</a><a href="sticks.html">Sticks</a><a href="seeds.html">Seeds</a><a href="index.html#games" aria-current="page">Games</a><a href="about.html">About</a></nav>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <filter id="wobble"><feTurbulence type="fractalNoise" baseFrequency="0.012" numOctaves="2" seed="7" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="4"/></filter>
 </svg>
-<section class="scene"><img src="img/minigame_room.png" alt="Pixel-art bedroom with a character, a task list and a timer" style="width:100%"><div class="dlg"><div class="namebox wob">Bandi</div><div class="textbox wob">Get ready for work before the timer runs out. Water the plant, take notes, find your phone. <b>My first real game, built in Snap in an intro programming class.</b></div><nav class="vnmenu"><a href="index.html">Home</a><a href="sticks.html">Sticks</a><a href="seeds.html">Seeds</a><a href="index.html#games" aria-current="page">Games</a><a href="about.html">About</a></nav></div></section>
+<section class="scene"><img src="img/minigame_room.png" alt="Pixel-art bedroom with a character, a task list and a timer" style="width:100%"><div class="dlg"><div class="namebox wob">Bandi</div><div class="textbox wob">Get ready for work before the timer runs out. Water the plant, take notes, find your phone. <b>My first real game, built in Snap in an intro programming class.</b></div></div></section>
 <div class="page">
-<div class="spec wob"><div><span class="k">year</span><br><span class="v">2024</span></div><div><span class="k">engine</span><br><span class="v">Snap (block-based)</span></div><div><span class="k">team</span><br><span class="v">solo</span></div><div><span class="k">my part</span><br><span class="v">design · code · pixel art</span></div><div><span class="k">made for</span><br><span class="v">Intro to Programming, ISB</span></div></div>
+<div class="spec wob"><div><span class="k">year</span><br><span class="v">2024</span></div><div><span class="k">engine</span><br><span class="v">Snap! (block-based)</span></div><div><span class="k">team</span><br><span class="v">solo</span></div><div><span class="k">my part</span><br><span class="v">design · code · pixel art</span></div><div><span class="k">made for</span><br><span class="v">Intro to Programming, ISB</span></div></div>
 <h2 class="chapter">What it is</h2><div class="line"><div><div class="say wob"><span class="who">Bandi</span>A top-down pixel room. You walk around with the keyboard, and when you're next to something you can use, an "e" pops up over your head. A task list in the corner tells you what still needs doing. A timer tells you how long you have.</div><div class="say wob" style="margin-top:10px"><span class="who">Bandi</span>The plot came from my mom: about 20% of the time she's leaving the house, she can't find her phone and has to look for it without being late.</div></div><figure class="frame wob" style="margin:22px 0 0"><img class="wide" src="img/minigame_room.png" alt="The bedroom scene with the e prompt"><figcaption>press e</figcaption></figure></div>
 <h2 class="chapter">What I made</h2><div class="line"><div><div class="say wob"><span class="who">Bandi</span>Everything, including all the pixel art, which is where two thirds of the time went. Collision so you don't walk through the bed. Good ending, bad ending. The "e" prompt is borrowed from a black-and-white game I played on itch.io and couldn't find again.</div><div class="say wob" style="margin-top:10px"><span class="who">Bandi</span>I kept a process journal for it: brainstorm, narrowing down, criteria v1, precedents, to-do list, criteria v2, testing, reflection.</div></div><div></div></div>
 <h2 class="chapter">What I learned</h2><div class="line"><div class="say wob"><span class="who">Bandi</span>(Bandi writes this part.)</div><div></div></div>
