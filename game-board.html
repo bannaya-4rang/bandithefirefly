@@ -109,13 +109,20 @@ footer{padding:14px clamp(20px,5vw,72px) 26px;color:var(--dim);font-size:12px;di
 body{padding-top:48px}
 html{scroll-padding-top:56px}
 </style>
+<style>
+/* large screens: cap the hero image/video height, centered, never cropped */
+.scene>img,.scene>video{display:block;width:auto!important;max-width:100%;max-height:62vh;height:auto;margin:0 auto;object-fit:contain}
+.scene .dlg{max-width:1180px;margin-left:auto;margin-right:auto;background:transparent}
+@media (min-width:1400px){.scene>img,.scene>video{max-height:56vh}}
+@media (max-width:820px){.scene>img,.scene>video{width:100%!important;max-height:none}}
+</style>
 </head>
 <body>
 <nav class="topnav"><a href="index.html">Home</a><a href="sticks.html">Sticks</a><a href="seeds.html">Seeds</a><a href="index.html#games" aria-current="page">Games</a><a href="about.html">About</a></nav>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <filter id="wobble"><feTurbulence type="fractalNoise" baseFrequency="0.012" numOctaves="2" seed="7" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="4"/></filter>
 </svg>
-<section class="scene"><video controls playsinline muted poster="img/board_play_poster.jpg" src="video/board_play.mp4" style="width:100%;display:block;background:#000"></video><div class="dlg"><div class="namebox wob">Bandi</div><div class="textbox wob">A hacker's virus is loose on a college student's PC. Two players, one board. <b>The virus wants three blocks. The PC wants the virus gone.</b> Every tile you lay has to keep the circuit legal.</div></div></section>
+<section class="scene" style="background:#000"><video controls playsinline muted poster="img/board_play_poster.jpg" src="video/board_play.mp4" style="width:100%;display:block;background:#000"></video><div class="dlg"><div class="namebox wob">Bandi</div><div class="textbox wob">A hacker's virus is loose on a college student's PC. Two players, one board. <b>The virus wants three blocks. The PC wants the virus gone.</b> Every tile you lay has to keep the circuit legal.</div></div></section>
 <div class="page">
 <div class="spec wob"><div><span class="k">when</span><br><span class="v">June 2026</span></div><div><span class="k">type</span><br><span class="v">analog · board game</span></div><div><span class="k">players</span><br><span class="v">2 (PC vs Virus)</span></div><div><span class="k">board</span><br><span class="v">9 × 9, start from center</span></div><div><span class="k">tiles</span><br><span class="v">54 drawn &amp; printed</span></div><div><span class="k">my part</span><br><span class="v">rules · tile art (Magma) · board</span></div></div>
 

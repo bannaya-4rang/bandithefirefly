@@ -99,13 +99,20 @@ footer{padding:14px clamp(20px,5vw,72px) 26px;color:var(--dim);font-size:12px;di
 body{padding-top:48px}
 html{scroll-padding-top:56px}
 </style>
+<style>
+/* large screens: cap the hero image/video height, centered, never cropped */
+.scene>img,.scene>video{display:block;width:auto!important;max-width:100%;max-height:62vh;height:auto;margin:0 auto;object-fit:contain}
+.scene .dlg{max-width:1180px;margin-left:auto;margin-right:auto;background:transparent}
+@media (min-width:1400px){.scene>img,.scene>video{max-height:56vh}}
+@media (max-width:820px){.scene>img,.scene>video{width:100%!important;max-height:none}}
+</style>
 </head>
 <body>
 <nav class="topnav"><a href="index.html">Home</a><a href="sticks.html">Sticks</a><a href="seeds.html">Seeds</a><a href="index.html#games" aria-current="page">Games</a><a href="about.html">About</a></nav>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <filter id="wobble"><feTurbulence type="fractalNoise" baseFrequency="0.012" numOctaves="2" seed="7" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="4"/></filter>
 </svg>
-<section class="scene"><img src="img/vn_scene_island.png" alt="A floating island with a sign reading Do NOT Enter, under construction" style="width:100%"><div class="dlg"><div class="namebox wob">Bandi</div><div class="textbox wob">A point-and-click visual novel about the place where all abandoned games, assets and ideas go. <b>Everything you see here is drawn by hand, in black and white, because that's what unfinished things look like to me.</b></div></div></section>
+<section class="scene" style="background:#000"><img src="img/vn_scene_island.png" alt="A floating island with a sign reading Do NOT Enter, under construction" style="width:100%"><div class="dlg"><div class="namebox wob">Bandi</div><div class="textbox wob">A point-and-click visual novel about the place where all abandoned games, assets and ideas go. <b>Everything you see here is drawn by hand, in black and white, because that's what unfinished things look like to me.</b></div></div></section>
 <div class="page">
 <div class="spec wob"><div><span class="k">when</span><br><span class="v">Oct 2025 – now</span></div><div><span class="k">engine</span><br><span class="v">Ren'Py · art in Magma</span></div><div><span class="k">team</span><br><span class="v">solo</span></div><div><span class="k">my part</span><br><span class="v">writing · art · code</span></div><div><span class="k">made for</span><br><span class="v">CAS project, ISB</span></div></div>
 <h2 class="chapter">What it is</h2><div class="line"><div><div class="say wob"><span class="who">Bandi</span>You wake up somewhere with a black sky and white shapes drifting in it. They look flat, like they were never finished. There's a floating island, a sign that says do not enter, and a hallway of doors. Every door is a game somebody started and stopped.</div><div class="say wob" style="margin-top:10px"><span class="who">Bandi</span>You click around, talk to what's left of the characters, and slowly figure out where you are and why there's a sign with your name on it.</div></div><figure class="frame wob" style="margin:22px 0 0"><img class="wide" src="img/vn_scene_sky.png" alt="Black sky with white shards; dialogue box reads They almost look flat"><figcaption>they almost look… flat?</figcaption></figure></div>

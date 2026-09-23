@@ -98,11 +98,18 @@ footer{padding:14px clamp(20px,5vw,72px) 26px;color:var(--dim);font-size:12px;di
 body{padding-top:48px}
 html{scroll-padding-top:56px}
 </style>
+<style>
+/* large screens: cap the hero image/video height, centered, never cropped */
+.scene>img,.scene>video{display:block;width:auto!important;max-width:100%;max-height:62vh;height:auto;margin:0 auto;object-fit:contain}
+.scene .dlg{max-width:1180px;margin-left:auto;margin-right:auto;background:transparent}
+@media (min-width:1400px){.scene>img,.scene>video{max-height:56vh}}
+@media (max-width:820px){.scene>img,.scene>video{width:100%!important;max-height:none}}
+</style>
 </head>
 <body>
 <nav class="topnav"><a href="index.html">Home</a><a href="sticks.html">Sticks</a><a href="seeds.html" aria-current="page">Seeds</a><a href="index.html#games">Games</a><a href="about.html">About</a></nav>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="wobble"><feTurbulence type="fractalNoise" baseFrequency="0.012" numOctaves="2" seed="7" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="4"/></filter></svg>
-<section class="scene"><img src="img/sky.png" alt="A black sky with flat white shards drifting above a white ground" style="width:100%"><div class="dlg"><div class="namebox wob">Bandi</div><div class="textbox wob">Ideas that haven't become games yet. Most of them showed up while I was peeling sticks. <b>Some are mechanics, some are worlds, some are just a thought I didn't want to lose.</b></div></div></section>
+<section class="scene" style="background:#000"><img src="img/sky.png" alt="A black sky with flat white shards drifting above a white ground" style="width:100%"><div class="dlg"><div class="namebox wob">Bandi</div><div class="textbox wob">Ideas that haven't become games yet. Most of them showed up while I was peeling sticks. <b>Some are mechanics, some are worlds, some are just a thought I didn't want to lose.</b></div></div></section>
 <div class="page">
 <div class="legend"><span class="tag2">seed</span> just an idea &nbsp; <span class="tag2">sketched</span> has notes or drawings &nbsp; <span class="tag2">prototyped</span> something playable exists</div>
 <h2 class="chapter">Four I keep coming back to</h2>
