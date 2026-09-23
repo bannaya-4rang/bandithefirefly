@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Tower Defense Tileset</title><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;700&family=Patrick+Hand&display=swap"><style>
+:root{--paper:#FFFFFF;--fill:#EBEBEB;--ink:#000000;--mute:#7A7A7A;--dim:#B5B5B5;
+  --ui:"Noto Sans","DejaVu Sans","Helvetica Neue",Arial,sans-serif;--hand:"Patrick Hand","Comic Sans MS",cursive}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--ui);font-size:16px;line-height:1.5}
+a{color:inherit;text-decoration:none}
+a:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+img{display:block;max-width:100%}
+.wob{filter:url(#wobble)}
+.box{background:var(--fill);border:2px solid var(--ink)}
+
+/* ---- top: the VN scene ---- */
+.scene{position:relative;background:#000;color:#fff;overflow:hidden}
+.scene img{width:100%;height:auto}
+.scene .dlg{position:relative;padding:12px 2% 3%;background:#000;margin-top:-2%}
+.namebox{display:inline-block;background:var(--fill);color:var(--ink);border:2px solid var(--ink);padding:6px 40px;font-size:clamp(16px,1.8vw,26px);margin:0 0 -2px 6%;position:relative;z-index:2}
+.textbox{background:var(--fill);color:var(--ink);border:2px solid var(--ink);padding:clamp(14px,2.4vw,32px) 20% clamp(20px,3vw,40px);font-size:clamp(15px,1.7vw,24px);line-height:1.45;min-height:0}
+.textbox b{font-weight:700}
+.vnmenu{display:flex;gap:clamp(10px,2.4vw,34px);justify-content:center;flex-wrap:wrap;padding:6px 0 10px;font-size:clamp(11px,1.15vw,16px);color:var(--dim)}
+.vnmenu a[aria-current]{color:#fff}
+.vnmenu a:hover{color:#fff}
+
+/* ---- hallway nav ---- */
+.hall{position:relative;border-top:2px solid var(--ink);border-bottom:2px solid var(--ink)}
+.hall img{width:100%}
+.hot{position:absolute;display:block}
+.hot .e{position:absolute;left:50%;top:-14%;transform:translateX(-50%);width:clamp(34px,5vw,64px);height:clamp(34px,5vw,64px);border-radius:50%;background:#fff;border:3px solid #8a8a8a;display:grid;place-items:center;font-weight:700;font-size:clamp(16px,2.4vw,30px);opacity:0;transition:opacity .15s}
+.hot .e::after{content:"";position:absolute;left:30%;bottom:-16px;border:9px solid transparent;border-top-color:#8a8a8a}
+.hot .lbl{position:absolute;left:50%;bottom:-10%;transform:translateX(-50%);font-family:var(--hand);font-size:clamp(14px,1.8vw,24px);background:#fff;border:2px solid var(--ink);padding:2px 12px;white-space:nowrap}
+.hot:hover .e,.hot:focus-visible .e{opacity:1}
+.hint{position:absolute;left:2%;top:3%;font-family:var(--hand);font-size:clamp(13px,1.5vw,20px);color:var(--mute)}
+
+/* ---- rooms ---- */
+.room{padding:clamp(28px,5vw,72px) clamp(20px,5vw,72px);border-bottom:2px solid var(--ink)}
+.room h2{font-family:var(--hand);font-weight:400;font-size:clamp(28px,4vw,52px);margin:0 0 18px;line-height:1}
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(20px,4vw,56px);align-items:center}
+.frame{background:var(--fill);border:2px solid var(--ink);padding:clamp(10px,1.6vw,22px)}
+.frame img{width:100%;aspect-ratio:1;object-fit:cover;border:2px solid var(--ink)}
+.frame figcaption{font-family:var(--hand);margin-top:8px;color:var(--mute)}
+.say{background:var(--fill);border:2px solid var(--ink);padding:18px 22px;font-size:clamp(15px,1.4vw,19px);line-height:1.5;position:relative;margin-top:14px}
+.say .who{position:absolute;top:-16px;left:18px;background:var(--fill);border:2px solid var(--ink);padding:0 14px;font-size:14px}
+.btn{display:inline-block;margin-top:16px;border:2px solid var(--ink);background:#fff;padding:8px 18px;font-family:var(--hand);font-size:18px}
+.btn:hover{background:var(--fill)}
+
+/* lockers = games */
+.lockers{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:0;border:2px solid var(--ink);background:#fff}
+.locker{border-right:2px solid var(--ink);padding:18px 18px 22px;min-height:240px;display:flex;flex-direction:column;gap:6px;background:var(--fill)}
+.locker:last-child{border-right:0}
+.locker .num{font-family:var(--hand);font-size:22px}
+.locker h3{margin:6px 0 0;font-size:17px;font-weight:700}
+.locker .meta{font-size:12.5px;color:var(--mute)}
+.locker p{margin:4px 0 0;font-size:14px}
+.locker .tag{margin-top:auto;font-family:var(--hand);font-size:15px;border:2px solid var(--ink);background:#fff;padding:2px 10px;align-self:flex-start}
+
+/* seeds = sky */
+.sky{position:relative;background:#000;color:#fff;border-bottom:2px solid var(--ink)}
+.sky img{width:100%;opacity:.95}
+.sky .over{position:absolute;inset:0;display:flex;align-items:flex-start;padding:clamp(20px,5vw,72px)}
+.sky .over > div{background:rgba(0,0,0,.82);padding:18px 22px 22px;max-width:56ch}
+.sky h2{font-family:var(--hand);font-weight:400;font-size:clamp(28px,4vw,52px);margin:0 0 10px;line-height:1}
+.sky p{max-width:48ch;color:#ddd;margin:0}
+.sky .btn{background:#000;color:#fff;border-color:#fff}
+
+/* poster = about */
+.poster{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(20px,4vw,56px);align-items:center}
+.poster img{border:2px solid var(--ink)}
+footer{padding:14px clamp(20px,5vw,72px) 26px;color:var(--dim);font-size:12px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+@media (max-width:820px){.two,.poster{grid-template-columns:1fr}.textbox{padding-inline:6%}.namebox{margin-left:3%}}
+</style><style>
+.page{max-width:1100px;margin:0 auto;padding:0 clamp(16px,4vw,40px)}
+.scene .textbox{padding-inline:12%}
+.scene video{width:100%;display:block;background:#000}
+.spec{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:0;border:2px solid var(--ink);background:var(--fill);margin:26px 0}
+.spec div{padding:14px 16px;border-right:2px solid var(--ink)}
+.spec div:last-child{border-right:0}
+.spec .k{font-family:var(--hand);font-size:15px;color:var(--mute)}
+.spec .v{font-weight:700;font-size:15px}
+.chapter{font-family:var(--hand);font-size:clamp(22px,3vw,34px);margin:40px 0 4px;display:flex;align-items:center;gap:14px}
+.chapter::after{content:"";flex:1;height:2px;background:var(--ink)}
+.shots{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-top:22px}
+.frame img.wide{aspect-ratio:16/9;object-fit:cover}
+.line{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,2fr);gap:24px;align-items:start;margin:22px 0}
+.quote{border:2px solid var(--ink);background:#fff;padding:18px 22px;font-family:var(--hand);font-size:19px;line-height:1.4}
+.quote small{display:block;margin-top:10px;font-family:var(--ui);font-size:12px;color:var(--mute)}
+.say .next{position:absolute;right:12px;bottom:6px;font-size:12px;color:var(--mute)}
+@media (max-width:820px){.line{grid-template-columns:1fr}}
+</style><style>.px img{image-rendering:pixelated}.frame img.map{aspect-ratio:14/9;object-fit:cover}.sheetimg{border:2px solid var(--ink);background:#fff;image-rendering:pixelated;width:100%}</style><style>
+.topnav{position:fixed;top:0;left:0;right:0;z-index:50;background:#000;display:flex;justify-content:center;gap:clamp(14px,3vw,40px);padding:12px 16px;font-size:clamp(13px,1.2vw,17px);color:var(--dim);border-bottom:2px solid #000}
+.topnav a[aria-current]{color:#fff;font-weight:700}
+.topnav a:hover{color:#fff}
+body{padding-top:48px}
+html{scroll-padding-top:56px}
+</style></head>
+<body>
+<nav class="topnav"><a href="index.html">Home</a><a href="sticks.html">Sticks</a><a href="seeds.html">Seeds</a><a href="index.html#games" aria-current="page">Games</a><a href="about.html">About</a></nav>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="wobble"><feTurbulence type="fractalNoise" baseFrequency="0.012" numOctaves="2" seed="7" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="4"/></filter></svg>
+<section class="scene px"><img src="img/assets/map_theme1.png" alt="A tower-defense map assembled from 16-pixel tiles: grass, a winding dirt path, stone towers" style="width:100%"><div class="dlg"><div class="namebox wob">Bandi</div><div class="textbox wob">Someone else was making a tower defense game. I was the artist. <b>Three themes, 16×16 pixels each, every tile drawn separately so they could build whatever map they wanted.</b></div></div></section>
+<div class="page">
+<div class="spec wob"><div><span class="k">when</span><br><span class="v">2023</span></div><div><span class="k">type</span><br><span class="v">pixel art · tileset</span></div><div><span class="k">for</span><br><span class="v">a classmate's tower defense game</span></div><div><span class="k">tool</span><br><span class="v">pixilart.com</span></div><div><span class="k">my part</span><br><span class="v">artist (all tiles)</span></div></div>
+
+<h2 class="chapter">What it is</h2>
+<div class="line"><div>
+<div class="say wob"><span class="who">Bandi</span>A collaboration with the Game Design class. I got a reference picture and a brief: make the assets for a tower defense game. Not a finished background, but the pieces. Blank tiles, straight paths, turns, tower bases, decorations, and the towers themselves.<span class="next">▼</span></div>
+<div class="say wob" style="margin-top:10px"><span class="who">Bandi</span>Three themes. A grass world with slightly-too-vibrant greens and glowing towers. A water world with coral paths. And a dark stone one. Each path comes in two sets so the client could pick a look.</div>
+</div>
+<figure class="frame wob px" style="margin:22px 0 0"><img src="img/assets/towers_4x.png" alt="Three pixel-art towers" style="aspect-ratio:auto;image-rendering:pixelated;background:#fff"><figcaption>the towers — sun, moon, and plain</figcaption></figure></div>
+
+<h2 class="chapter">The tiles</h2>
+<div class="say wob" style="margin-top:22px"><span class="who">Bandi</span>Everything is 16×16 (towers are 32×64). Shown here at 4× so you can actually see them. Path tiles are drawn once and the client rotates them.</div>
+<div class="shots px">
+<figure class="frame wob" style="margin:0"><img class="sheetimg" src="img/assets/Theme_1_sheet.png" alt="Theme 1 tiles" style="aspect-ratio:auto"><figcaption>theme 1 — grass</figcaption></figure>
+<figure class="frame wob" style="margin:0"><img class="sheetimg" src="img/assets/Theme_2_sheet.png" alt="Theme 2 tiles" style="aspect-ratio:auto"><figcaption>theme 2 — water</figcaption></figure>
+<figure class="frame wob" style="margin:0"><img class="sheetimg" src="img/assets/Theme_3_sheet.png" alt="Theme 3 tiles" style="aspect-ratio:auto"><figcaption>theme 3 — stone</figcaption></figure>
+</div>
+
+<h2 class="chapter">Sample maps</h2>
+<div class="say wob" style="margin-top:22px"><span class="who">Bandi</span>These are demonstrations, not what the client built. Same path in all three themes so you can see the tiles do the same job in different clothes. The small one is the demo I made at the time (theme 1, path set 2).</div>
+<div class="shots px">
+<figure class="frame wob" style="margin:0"><img class="map" src="img/assets/map_theme1.png" alt="Sample map, theme 1"><figcaption>theme 1</figcaption></figure>
+<figure class="frame wob" style="margin:0"><img class="map" src="img/assets/map_theme2.png" alt="Sample map, theme 2"><figcaption>theme 2</figcaption></figure>
+<figure class="frame wob" style="margin:0"><img class="map" src="img/assets/map_theme3.png" alt="Sample map, theme 3"><figcaption>theme 3</figcaption></figure>
+<figure class="frame wob" style="margin:0"><img src="img/assets/bandi_demo_map_4x.png" alt="Bandi's original 2023 demo map" style="aspect-ratio:auto;image-rendering:pixelated"><figcaption>my 2023 demo, as it was</figcaption></figure>
+</div>
+
+<h2 class="chapter">What I learned</h2>
+<div class="line"><div class="say wob"><span class="who">Bandi</span>(Bandi writes this part.)</div><div></div></div>
+<div style="margin:36px 0 10px"><a class="btn wob" href="index.html#games">← back to the lockers</a></div>
+</div>
+<footer><span>bandithefirefly.com</span><span>반디 · firefly</span></footer>
+</body></html>
