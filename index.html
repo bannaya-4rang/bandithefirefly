@@ -50,15 +50,28 @@ img{display:block;max-width:100%}
 .btn:hover{background:var(--fill)}
 
 /* lockers = games */
-.lockers{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:0;border:2px solid var(--ink);background:#fff}
-.locker{border-right:2px solid var(--ink);padding:18px 18px 22px;min-height:240px;display:flex;flex-direction:column;gap:6px;background:var(--fill)}
-.locker:last-child{border-right:0}
-.locker .num{font-family:var(--hand);font-size:22px}
-.locker h3{margin:6px 0 0;font-size:17px;font-weight:700}
-.locker .meta{font-size:12.5px;color:var(--mute)}
-.locker p{margin:4px 0 0;font-size:14px}
-.locker .tag{margin-top:auto;font-family:var(--hand);font-size:15px;border:2px solid var(--ink);background:#fff;padding:2px 10px;align-self:flex-start}
-
+.lockers{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:8px;padding:8px;border:2px solid var(--ink);background:#fff}
+.locker{border:2px solid var(--ink);padding:0 0 18px;min-height:0;display:flex;flex-direction:column;gap:6px;background:var(--fill)}
+.locker .thumb{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;border-bottom:2px solid var(--ink);filter:grayscale(1) contrast(1.05);transition:filter .2s}
+.locker:hover .thumb{filter:none}
+.locker .num{font-family:var(--hand);font-size:20px;padding:12px 18px 0}
+.locker h3{margin:2px 0 0;font-size:16px;font-weight:700;padding:0 18px}
+.locker .meta{font-size:12px;color:var(--mute);padding:0 18px}
+.locker p{margin:4px 0 0;font-size:13.5px;padding:0 18px}
+.locker .tag{margin:auto 18px 0;font-family:var(--hand);font-size:14px;border:2px solid var(--ink);background:#fff;padding:1px 10px;align-self:flex-start}
+/* the Error 404 pair: one idea, two versions */
+.pair{grid-column:span 2;border:2px solid var(--ink);background:#000;color:#fff;display:grid;grid-template-rows:auto 1fr;align-content:start}
+.pair .head{padding:12px 18px 10px;display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;border-bottom:2px solid var(--ink)}
+.pair .head .num{font-family:var(--hand);font-size:20px}
+.pair .head h3{margin:0;font-size:16px;font-weight:700}
+.pair .head small{font-family:var(--hand);font-size:14px;color:var(--dim)}
+.pair .halves{display:grid;grid-template-columns:1fr 1fr}
+.pair .locker{border:0;border-right:2px solid var(--ink);color:var(--ink)}
+.pair .head{align-self:start}
+.pair .locker:last-child{border-right:0}
+.pair .locker .ver{font-family:var(--hand);font-size:18px;padding:10px 18px 0;display:flex;align-items:center;gap:8px}
+.pair .locker .ver svg{width:20px;height:20px}
+@media (max-width:640px){.pair{grid-column:span 1}.pair .halves{grid-template-columns:1fr}.pair .locker{border-right:0;border-bottom:2px solid var(--ink)}.pair .locker:last-child{border-bottom:0}}
 /* seeds = sky */
 .sky{position:relative;background:#000;color:#fff;border-bottom:2px solid var(--ink)}
 .sky img{width:100%;opacity:.95}
@@ -129,12 +142,17 @@ html{scroll-padding-top:56px}
 <section class="room" id="games">
   <h2>Games</h2>
   <div class="lockers wob">
-    <a class="locker" href="game-virus.html"><span class="num">01</span><h3>Error 404: Your File Has Been Corrupted <br><small style="font-weight:400;color:var(--mute)">videogame version</small></h3><span class="meta">sept 2026 · unity · solo · design, code, art</span><p>Your PC has a virus and tech support is ten minutes away. Find the password before the files are gone.</p><span class="tag">in progress · video</span></a>
-    <a class="locker" href="game-board.html"><span class="num">02</span><h3>Error 404: Your File Has Been Corrupted <br><small style="font-weight:400;color:var(--mute)">tabletop version</small></h3><span class="meta">june 2026 · analog · 2 players · 54 tiles</span><p>A hacker's virus spreads through red wires; you hunt it down the blue ones. Every tile you place has to keep the circuit legal.</p><span class="tag">playable · printed</span></a>
-    <a class="locker" href="game-vn.html"><span class="num">03</span><h3>Where Abandoned Ideas Go</h3><span class="meta">oct 2025 – now · ren'py · solo · CAS project</span><p>A point-and-click visual novel about the place where abandoned games, assets and ideas go. You are looking at it.</p><span class="tag">under construction</span></a>
-    <a class="locker" href="game-shooter.html"><span class="num">04</span><h3>Untitled First and Third Person Horror Game</h3><span class="meta">july 2025 · unreal engine 5 · team of 3 · 5 days</span><p>Find the weapon before night falls, then survive. I built the level and the spawn system.</p><span class="tag">playable · video</span></a>
-    <a class="locker" href="game-minigame.html"><span class="num">05</span><h3>Morning Routine</h3><span class="meta">2024 · snap! · solo</span><p>Get ready for work before the timer runs out. Based on the mornings my mom can't find her phone.</p><span class="tag">playable</span></a>
-    <a class="locker" href="game-assets.html"><span class="num">06</span><h3>Tower Defense Tileset</h3><span class="meta">2023 · pixel art · artist</span><p>Three themes of 16×16 tiles for a classmate's tower defense game. Every tile drawn separately so they could build any map.</p><span class="tag">art</span></a>
+    <div class="pair wob">
+      <div class="head"><span class="num">01 · 02</span><h3>Error 404: Your File Has Been Corrupted</h3><small>one idea, two versions</small></div>
+      <div class="halves">
+        <a class="locker" href="game-virus.html"><img class="thumb" src="img/thumbs/error404_video.jpg" alt="Fake desktop with pop-ups"><span class="ver"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="3" width="16" height="11" rx="1"/><path d="M7 17h6M10 14v3"/></svg>videogame</span><span class="meta">sept 2026 · unity · solo · design, code, art</span><p>Your PC has a virus and tech support is ten minutes away. You're alone, and the virus doesn't take turns.</p><span class="tag">in progress · video</span></a>
+        <a class="locker" href="game-board.html"><img class="thumb" src="img/thumbs/error404_table.jpg" alt="Printed circuit-tile board mid-game"><span class="ver"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2.5" y="2.5" width="15" height="15"/><path d="M2.5 7.5h15M2.5 12.5h15M7.5 2.5v15M12.5 2.5v15"/></svg>tabletop</span><span class="meta">june 2026 · analog · 2 players · 54 tiles</span><p>Same virus, but now it's a person across the table. Lay circuit tiles; every wire has to stay legal.</p><span class="tag">playable · printed · trailer</span></a>
+      </div>
+    </div>
+    <a class="locker" href="game-vn.html"><img class="thumb" src="img/thumbs/vn.jpg" alt="Floating island scene"><span class="num">03</span><h3>Where Abandoned Ideas Go</h3><span class="meta">oct 2025 – now · ren'py · solo · CAS project</span><p>A point-and-click visual novel about the place where abandoned games, assets and ideas go. You are looking at it.</p><span class="tag">under construction</span></a>
+    <a class="locker" href="game-shooter.html"><img class="thumb" src="img/thumbs/shooter.jpg" alt="Valley level"><span class="num">04</span><h3>Untitled First and Third Person Horror Game</h3><span class="meta">july 2025 · unreal engine 5 · team of 3 · 5 days</span><p>Find the weapon before night falls, then survive. I built the level and the spawn system.</p><span class="tag">playable · video</span></a>
+    <a class="locker" href="game-minigame.html"><img class="thumb" src="img/thumbs/minigame.jpg" alt="Pixel bedroom"><span class="num">05</span><h3>Morning Routine</h3><span class="meta">2024 · snap! · solo</span><p>Get ready for work before the timer runs out. Based on the mornings my mom can't find her phone.</p><span class="tag">playable</span></a>
+    <a class="locker" href="game-assets.html"><img class="thumb" src="img/thumbs/tileset.jpg" alt="Tower defense map"><span class="num">06</span><h3>Tower Defense Tileset</h3><span class="meta">2023 · pixel art · artist</span><p>Three themes of 16×16 tiles for a classmate's tower defense game. Every tile drawn separately so they could build any map.</p><span class="tag">art</span></a>
   </div>
 </section>
 
