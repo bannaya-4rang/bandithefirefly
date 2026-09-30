@@ -79,13 +79,33 @@ img{display:block;max-width:100%}
 .pair .locker .ver svg{width:20px;height:20px}
 @media (max-width:640px){.pair{grid-column:span 1}.pair .halves{grid-template-columns:1fr}.pair .locker{border-right:0;border-bottom:2px solid var(--ink)}.pair .locker:last-child{border-bottom:0}}
 /* seeds = sky */
-.sky{position:relative;background:#000;color:#fff;border-bottom:2px solid var(--ink)}
-.sky img{width:100%;opacity:.95}
-.sky .over{position:absolute;inset:0;display:flex;align-items:flex-start;padding:clamp(20px,5vw,72px)}
-.sky .over > div{background:rgba(0,0,0,.82);padding:18px 22px 22px;max-width:56ch}
-.sky h2{font-family:var(--hand);font-weight:400;font-size:clamp(28px,4vw,52px);margin:0 0 10px;line-height:1}
-.sky p{max-width:48ch;color:#ddd;margin:0}
-.sky .btn{background:#000;color:#fff;border-color:#fff}
+.sky{position:relative;background:#000;color:#fff;border-bottom:2px solid var(--ink);overflow:hidden}
+.sky>img{width:100%;opacity:.95;display:block}
+.sky .over{position:absolute;inset:0;padding:clamp(20px,4vw,64px)}
+.sky .intro{background:rgba(0,0,0,.82);padding:18px 22px 22px;max-width:46ch}
+.sky h2{font-family:var(--hand);font-weight:400;font-size:clamp(28px,4vw,52px);margin:0 0 6px;line-height:1}
+.sky h2 small{display:block;font-size:.42em;color:#bbb;margin-top:6px}
+.sky p{max-width:44ch;color:#ddd;margin:0}
+.sky .btn{background:#fff;color:#000;border-color:#000;outline:2px solid #fff;margin-top:14px;font-size:18px;padding:8px 18px}
+.sky .btn:hover{background:#000;color:#fff}
+/* seed notes: paper scraps pinned to the sky, every one is a link */
+.notes{position:absolute;inset:0;pointer-events:none}
+.note{pointer-events:auto;position:absolute;left:var(--x);top:var(--y);width:clamp(150px,17vw,220px);background:#fff;color:var(--ink);border:2px solid var(--ink);outline:2px solid #fff;padding:10px 12px 12px;text-decoration:none;font-size:12.5px;line-height:1.35;transform:rotate(var(--r));animation:bob var(--d,6s) ease-in-out infinite;transition:transform .25s}
+.note b{display:block;font-family:var(--hand);font-weight:400;font-size:19px;line-height:1;margin-bottom:6px}
+.note b::before{content:"✦ ";font-size:13px}
+.note:hover,.note.lit{transform:rotate(0) scale(1.06);animation-play-state:paused;z-index:2}
+.note.more{background:#000;color:#fff;border-color:#fff;outline-color:#000;font-family:var(--hand);font-size:18px;text-align:center;padding:12px}
+@keyframes bob{0%,100%{translate:0 0}50%{translate:0 -8px}}
+@media (prefers-reduced-motion:reduce){.note{animation:none}}
+@media (max-width:820px){
+  .sky>img{position:absolute;inset:0;height:100%;object-fit:cover}
+  .sky .over{position:relative;display:flex;flex-direction:column;gap:18px}
+  .sky .intro{max-width:none}
+  .notes{position:relative;inset:auto;display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:6px}
+  .note{position:static;width:auto;--r:0deg}
+  .note:nth-child(odd){--r:-1.5deg}.note:nth-child(even){--r:1.5deg}
+}
+@media (max-width:420px){.notes{grid-template-columns:1fr}}
 
 /* poster = about */
 .poster{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(20px,4vw,56px);align-items:center}
@@ -166,10 +186,17 @@ html{scroll-padding-top:56px}
 <section class="sky" id="seeds">
   <img src="img/sky.png" alt="A black sky with flat white shards floating above a white ground">
   <div class="over">
-    <div>
-      <h2>Seeds</h2>
-      <p>They almost look… flat. Ideas that haven't become games yet: a bow that fires the words you say, a kitchen where none of the ingredients are yours, a scope that only shows the future as riddles.</p>
-      <a class="btn wob" href="seeds.html">Look closer →</a>
+    <div class="intro">
+      <h2>Seeds <small>11 ideas · 0 games · yet</small></h2>
+      <p>They almost look… flat. Ideas that haven't become games. Each one is a rule I want to see people live inside.</p>
+      <a class="btn wob" href="seeds.html">Open the drawer →</a>
+    </div>
+    <div class="notes">
+      <a class="note wob" href="seeds.html#bow" style="--x:50%;--y:8%;--r:-4deg;--d:6.5s"><b>Bow &amp; Arrow</b>Every mean thing you say is an arrow you have to draw and shoot yourself.</a>
+      <a class="note wob" href="seeds.html#fragments" style="--x:72%;--y:30%;--r:3deg;--d:7.5s"><b>Fragments</b>You can only say what you've heard.</a>
+      <a class="note wob" href="seeds.html#kitchen" style="--x:47%;--y:52%;--r:2deg;--d:5.8s"><b>Foreign Kitchen</b>A cooking game where nothing in the kitchen is from your world.</a>
+      <a class="note wob" href="seeds.html#scope" style="--x:69%;--y:60%;--r:-3deg;--d:8s"><b>The Scope</b>It shows the past, then the future, then why prophets speak in riddles.</a>
+      <a class="note more wob" href="seeds.html" style="--x:79%;--y:9%;--r:5deg;--d:7s">+7 more<br>in the drawer →</a>
     </div>
   </div>
 </section>
@@ -192,7 +219,7 @@ html{scroll-padding-top:56px}
 /* touch screens have no hover: light up the thumbnail of the card that is in the middle of the screen */
 (function(){
   if(!window.matchMedia('(hover:none)').matches||!('IntersectionObserver' in window))return;
-  var cards=document.querySelectorAll('.locker');
+  var cards=document.querySelectorAll('.locker,.note');
   var io=new IntersectionObserver(function(es){
     es.forEach(function(e){e.target.classList.toggle('lit',e.isIntersecting);});
   },{rootMargin:'-30% 0px -30% 0px',threshold:0});
