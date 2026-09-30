@@ -53,7 +53,13 @@ img{display:block;max-width:100%}
 .lockers{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:8px;padding:8px;border:2px solid var(--ink);background:#fff}
 .locker{border:2px solid var(--ink);padding:0 0 18px;min-height:0;display:flex;flex-direction:column;gap:6px;background:var(--fill)}
 .locker .thumb{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;border-bottom:2px solid var(--ink);filter:grayscale(1) contrast(1.05);transition:filter .2s}
-.locker:hover .thumb{filter:none}
+.locker:hover .thumb,.locker.lit .thumb{filter:none}
+.locker{position:relative}
+.locker:active{background:#fff}
+/* "open" badge over the thumbnail: always on for touch screens, on hover for mouse */
+.locker::after{content:"tap to open →";position:absolute;top:10px;right:10px;font-family:var(--hand);font-size:14px;line-height:1;background:#fff;color:var(--ink);border:2px solid var(--ink);padding:3px 8px;pointer-events:none;opacity:0;transition:opacity .2s}
+@media (hover:hover){.locker::after{content:"open →"}.locker:hover::after{opacity:1}}
+@media (hover:none){.locker::after{opacity:1}.locker.lit::after{background:var(--ink);color:#fff;border-color:#fff}}
 .locker .num{font-family:var(--hand);font-size:20px;padding:12px 18px 0}
 .locker h3{margin:2px 0 0;font-size:16px;font-weight:700;padding:0 18px}
 .locker .meta{font-size:12px;color:var(--mute);padding:0 18px}
@@ -182,5 +188,16 @@ html{scroll-padding-top:56px}
 
 <footer><span>bandithefirefly.com</span><span>반디 · firefly</span></footer>
 
+<script>
+/* touch screens have no hover: light up the thumbnail of the card that is in the middle of the screen */
+(function(){
+  if(!window.matchMedia('(hover:none)').matches||!('IntersectionObserver' in window))return;
+  var cards=document.querySelectorAll('.locker');
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){e.target.classList.toggle('lit',e.isIntersecting);});
+  },{rootMargin:'-30% 0px -30% 0px',threshold:0});
+  cards.forEach(function(c){io.observe(c);});
+})();
+</script>
 </body>
 </html>
