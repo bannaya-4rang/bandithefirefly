@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Bandi Li — résumé</title>
+<!-- FONTS: on the live site use the Google Fonts line below; the local build swaps in @font-face. -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&family=Patrick+Hand&display=swap">
+<style>
+:root{--ink:#000;--fill:#EBEBEB;--mute:#7A7A7A;--dim:#B5B5B5;
+  --ui:"Source Sans 3","Noto Sans","Helvetica Neue",Arial,sans-serif;--hand:"Patrick Hand","Comic Sans MS",cursive}
+@page{size:Letter;margin:0}
+*{box-sizing:border-box}
+html,body{margin:0;background:#fff;color:var(--ink);font-family:var(--ui);font-size:10pt;line-height:1.32}
+.sheet{width:8.5in;height:11in;padding:.55in .6in .5in;position:relative;overflow:hidden}
+a{color:inherit;text-decoration:none}
+.wob{position:relative;border-color:transparent!important}.wob::before{content:"";position:absolute;inset:-2px;border:2px solid var(--ink);filter:url(#wobble);pointer-events:none}
+
+/* header */
+.head{display:flex;justify-content:space-between;align-items:flex-end;border-bottom:2px solid var(--ink);padding-bottom:8pt}
+.head h1{font-family:var(--hand);font-weight:400;font-size:30pt;line-height:1;margin:0}
+.head h1 small{font-family:var(--ui);font-size:10.5pt;color:var(--mute);margin-left:10pt;font-weight:400}
+.head .tag{font-family:var(--hand);font-size:12.5pt;margin-top:3pt}
+.head .contact{text-align:right;font-size:10pt;line-height:1.5}
+.head .contact b{font-weight:600}
+
+/* sections */
+section{display:grid;grid-template-columns:1.05in 1fr;gap:0 14pt;margin-top:8pt}
+section h2{font-family:var(--hand);font-weight:400;font-size:14pt;margin:0;padding-top:1pt;color:var(--ink)}
+.item{display:grid;grid-template-columns:1fr auto;gap:0 10pt;margin-bottom:4.5pt;break-inside:avoid}
+.item h3{margin:0;font-size:10.8pt;font-weight:700;line-height:1.3}
+.item h3 span{font-weight:400;color:var(--mute)}
+.item .when{font-family:var(--hand);font-size:11pt;color:var(--mute);white-space:nowrap;padding-top:1pt}
+.item p{margin:1pt 0 0;grid-column:1 / -1}
+.item .role{font-family:var(--hand);font-size:11pt;margin-right:6pt}
+
+/* skills strip */
+.spec{display:grid;grid-template-columns:1.3fr .8fr 1.5fr 1.3fr;border:2px solid var(--ink);background:var(--fill)}
+.spec div{padding:4pt 7pt 5pt;border-right:2px solid var(--ink);font-size:9.8pt;line-height:1.35}
+.spec div:last-child{border-right:0}
+.spec .k{font-family:var(--hand);font-size:10.5pt;color:var(--mute);display:block}
+
+/* placeholders Bandi fills */
+.todo{font-family:var(--hand);color:var(--mute);border:1.5px dashed var(--mute);padding:0 5pt;background:#fff}
+
+.edu p{margin:0}
+.edu .sub{color:var(--mute)}
+.foot{position:absolute;left:.6in;right:.6in;bottom:.35in;display:flex;justify-content:space-between;font-size:8.5pt;color:var(--dim);font-family:var(--hand)}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="wobble"><feTurbulence type="fractalNoise" baseFrequency="0.012" numOctaves="2" seed="7" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="3"/></filter></svg>
+<div class="sheet">
+
+<div class="head">
+  <div>
+    <h1>Bandi Li <small>李伴笛 · 리반디</small></h1>
+    <div class="tag">I think in rules, and I find them with a carving knife.</div>
+  </div>
+  <div class="contact">
+    <b>bandithefirefly.com</b><br>
+    <span class="todo">your@email.com</span><br>
+    Beijing, China
+  </div>
+</div>
+
+<section class="edu">
+  <h2>Education</h2>
+  <div>
+    <div class="item">
+      <h3>International School of Beijing <span>· IB Diploma Programme</span></h3>
+      <div class="when">2025 – May 2027</div>
+      <p>HL: Mathematics AA · Physics · Chinese B &nbsp;&nbsp; SL: English A · Chemistry · Economics<br><span class="sub">Languages: Korean · English · Mandarin Chinese</span></p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Games &amp; work</h2>
+  <div>
+    <div class="item">
+      <h3>Error 404: Your File Has Been Corrupted <span>· videogame</span></h3>
+      <div class="when">Sept 2026 – now</div>
+      <p><span class="role">Unity · C# · solo</span>Survival game set on a fake desktop: tech support is ten minutes away and a virus is corrupting your files. Design, code and art. In progress; first Unity project.</p>
+    </div>
+    <div class="item">
+      <h3>Error 404 <span>· tabletop version</span></h3>
+      <div class="when">June 2026</div>
+      <p><span class="role">analog · 2 players · solo</span>Tile-laying board game of the same idea, PC vs. Virus on a 9×9 motherboard. Wrote the rules, drew and printed all 54 circuit tiles, built the board, playtested.</p>
+    </div>
+    <div class="item">
+      <h3>Where Abandoned Ideas Go <span>· visual novel</span></h3>
+      <div class="when">Oct 2025 – now</div>
+      <p><span class="role">Ren'Py · solo · CAS project</span>Point-and-click visual novel about the place where unfinished games, assets and ideas end up. Writing, hand-drawn art and code. The portfolio site is built in its look.</p>
+    </div>
+    <div class="item">
+      <h3>Untitled First and Third Person Horror Game <span>· 3D shooter</span></h3>
+      <div class="when">July 2025</div>
+      <p><span class="role">Unreal Engine 5 · team of 3 · 5 days</span>Team lead for "Scary Game Devs" at the iD Tech Game Design Academy, Stanford University. Built the valley level and the enemy spawn system; merged three people's work into one playable build.</p>
+    </div>
+    <div class="item">
+      <h3>Morning Routine <span>· mini-game</span></h3>
+      <div class="when">2024</div>
+      <p><span class="role">Snap! · solo</span>Get ready for work before the timer runs out. Design, code and pixel art, for Intro to Programming at ISB.</p>
+    </div>
+    <div class="item">
+      <h3>Tower Defense Tileset <span>· pixel art</span></h3>
+      <div class="when">2023</div>
+      <p><span class="role">artist</span>Three themes of 16×16 tiles, every tile drawn separately so a classmate could build any map for his tower defense game.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Skills</h2>
+  <div class="spec wob">
+    <div><span class="k">engines</span>Unity · Unreal Engine 5 · Ren'Py · Snap!</div>
+    <div><span class="k">code</span>C# · Python</div>
+    <div><span class="k">design</span>game &amp; systems · level · tabletop · prototyping &amp; design docs</div>
+    <div><span class="k">art</span>pixel art · Procreate · Magma · hand carving</div>
+  </div>
+</section>
+
+<section>
+  <h2>Also</h2>
+  <div>
+    <div class="item">
+      <h3>iD Tech Game Design Academy with Unreal Engine 5 <span>· Stanford University</span></h3>
+      <div class="when">July 2025</div>
+      <p>Certificate of completion; instructor's note cites leading the team and building "the top-class level and the spawn system."</p>
+    </div>
+    <div class="item">
+      <h3>Kendo <span>· and badminton, less seriously</span></h3>
+      <div class="when">2025 – now</div>
+      <p>Weekly practice. Said no to it for years, then started, then stopped skipping.</p>
+    </div>
+    <div class="item">
+      <h3>East Asian ink painting</h3>
+      <div class="when">2021 – 2024</div>
+      <p>Three to four years of lessons through Grade 10. The black lines on the portfolio start here.</p>
+    </div>
+    <div class="item">
+      <h3>Library volunteer <span>· public library, Beijing</span></h3>
+      <div class="when">2026 – now</div>
+      <p>Shelving and sorting. Recently started; the part of the week I look forward to most.</p>
+    </div>
+    <div class="item">
+      <h3>Sticks</h3>
+      <div class="when">ongoing</div>
+      <p>Skinning sticks with a carving knife, one layer at a time. Essay at bandithefirefly.com/sticks.html</p>
+    </div>
+    </div>
+    </div>
+</section>
+
+<div class="foot"><span>Bandi Li · résumé · updated <span class="todo">month year</span></span><span>bandithefirefly.com</span></div>
+</div>
+</body>
+</html>
