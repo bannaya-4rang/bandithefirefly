@@ -21,7 +21,7 @@ If you ever break something, don't panic. Every commit is saved. You can open th
 | `index.html` | home page: the island scene, the Sticks teaser, the Games lockers, the Seeds sky |
 | `sticks.html` | the Sticks essay, in dialogue boxes |
 | `seeds.html` | your idea journal, three tiers |
-| `about.html` | placeholder — under construction sign. Yours to write. |
+| `about.html` | template with placeholders — Who / Why games / What I work with / Right now / Say hi. Yours to fill. |
 | `game-virus.html` | Error 404 (videogame version) |
 | `game-board.html` | Error 404 (tabletop version) — includes all 54 tiles from `img/tiles/` |
 | `game-vn.html` | Where Abandoned Ideas Go |
@@ -81,7 +81,7 @@ Order on the page = order in the file. Move the block to move the locker.
 
 ## Things that are placeholders right now
 
-- `about.html` — only a sign. Needs: three sentences about you, a photo (or a drawing), a résumé link.
+- `about.html` — now a template. Every dashed box (`<span class="todo">`) is a placeholder: replace the words, delete the span tags. Add a self-portrait (3:4) and a `resume.pdf`.
 - Every "What I learned" box.
 - Game pages say "video goes here" only in the preview copies; on the live site the videos play.
 - The Seeds block on the home page says "11 ideas · 0 games · yet" and "+7 more in the drawer". Those numbers are typed by hand in `index.html`; update them when you add ideas to `seeds.html`.
@@ -95,9 +95,13 @@ Black, white, one grey (`#EBEBEB`). Two fonts: Source Sans 3 for reading, Patric
 
 1. Copy `game-minigame.html` (it's the simplest) to `game-newname.html`.
 2. Change the `<title>`, the top dialogue, the spec strip, the text boxes, the images.
-3. Add a locker for it in `index.html`. Put it first if it's the newest.
+3. Add a locker for it in `index.html`. Put it first if it's the newest. Also add it to the "Other lockers" strip at the bottom of every game page (same six-or-seven links in each file).
 4. Put its pictures in `img/`, video in `video/` (keep videos under ~15 MB; re-encode if bigger).
 5. Commit. Check the live site on your phone too.
+
+## The résumé
+
+`resume.pdf` is linked from the About page. Its editable source is `resume-source.html` (kept out of the site folder on purpose). To update it: edit the html in any text editor, open it in Chrome, Print → Save as PDF (Letter, no margins, background graphics on), and upload the new `resume.pdf` over the old one. Dashed boxes are placeholders; replace the words and delete the `<span class="todo">` tags.
 
 ## If you want to go further
 
