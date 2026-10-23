@@ -115,16 +115,10 @@ html{scroll-padding-top:56px}
 .portrait figcaption{font-family:var(--hand);margin-top:8px;color:var(--mute)}
 .contact{display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin-top:8px}
 @media (max-width:820px){.line.with{grid-template-columns:1fr}}
+.page .line{grid-template-columns:1fr;max-width:62ch}
 </style>
 </head>
 <body>
-<!-- ============================================================
-     ABOUT — this is a TEMPLATE. Bandi fills it in.
-     Everything inside <span class="todo">…</span> is a placeholder.
-     Replace the text and delete the span tags (keep the words).
-     Rules of thumb: first person, short, no adjectives about yourself.
-     The games prove the adjectives. Keep it to one screen.
-     ============================================================ -->
 <nav class="topnav"><a href="index.html">Home</a><a href="sticks.html">Sticks</a><a href="index.html#games">Games</a><a href="seeds.html">Seeds</a><a href="about.html" aria-current="page">About</a></nav>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="wobble"><feTurbulence type="fractalNoise" baseFrequency="0.012" numOctaves="2" seed="7" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="4"/></filter></svg>
 
@@ -132,28 +126,21 @@ html{scroll-padding-top:56px}
   <img src="img/island.png" alt="A floating island with a sign reading Do NOT Enter, under construction">
   <div class="dlg">
     <div class="namebox wob">Bandi</div>
-    <div class="textbox wob">The sign is real. I'm still building. <b>So is this page.</b></div>
+    <div class="textbox wob">The sign is real. I'm still building. <b>That's the whole plan.</b></div>
   </div>
 </section>
 
 <div class="page">
 
 <h2 class="chapter">Who</h2>
-<div class="line with">
-  <div>
-    <div class="say wob"><span class="who">Bandi</span>I'm Bandi. Bandi Li on paper, 李伴笛 in Chinese, 리반디 at home. Bandi means firefly in Korean. I'm a senior at the International School of Beijing, class of 2027.</div>
-    <div class="say wob" style="margin-top:10px"><span class="who">Bandi</span><span class="todo">One sentence about how you think. Something like: I think in rules, and I find them with a carving knife. Or write your own.</span></div>
-    <div class="say wob" style="margin-top:10px"><span class="who">Bandi</span><span class="todo">One sentence about where you're from and where you've lived, only if it matters to how you make things. Delete this box if it doesn't.</span></div>
-  </div>
-  <figure class="portrait wob" style="margin:22px 0 0">
-    <div class="ph">self-portrait goes here<br><small>black and white, your drawing style<br>(or a photo, 3:4, if you'd rather)</small></div>
-    <figcaption><span class="todo">caption in your handwriting</span></figcaption>
-  </figure>
+<div class="line">
+  <div class="say wob"><span class="who">Bandi</span>I'm Bandi. Bandi Li on paper, 李伴笛 in Chinese, 리반디 at home. Bandi means firefly in Korean. I'm a senior at the International School of Beijing, class of 2027.</div>
 </div>
 
 <h2 class="chapter">Why games</h2>
 <div class="line">
-  <div class="say wob"><span class="who">Bandi</span><span class="todo">Two or three sentences. Not "I love games" — what games let you do that a drawing or an essay can't. What happens to a player inside a rule you wrote. Be specific; use one of your own games as the example.</span></div>
+  <div class="say wob"><span class="who">Bandi</span>Because it's fun. And because the games I wanted to play didn't exist, so I had to make them.</div>
+  <div class="say wob" style="margin-top:10px"><span class="who">Bandi</span>Somewhere along the way I noticed that's also how I understand things. If I can turn something into rules, I've understood it. If I can make someone else play by those rules, I've said it.</div>
 </div>
 
 <h2 class="chapter">What I work with</h2>
@@ -163,12 +150,10 @@ html{scroll-padding-top:56px}
   <div><span class="k">design</span><br><span class="v">game &amp; systems design · level design · tabletop design · prototyping &amp; design docs</span></div>
   <div><span class="k">art</span><br><span class="v">pixel art · Procreate · hand carving</span></div>
 </div>
-<!-- Only list what a page on this site shows. If you add Photoshop, Fusion 360 or CapCut,
-     add the thing you made with it somewhere on the site first. -->
 
 <h2 class="chapter">Right now</h2>
 <div class="line">
-  <div class="say wob"><span class="who">Bandi</span>Finishing <a href="game-virus.html" style="text-decoration:underline">Error 404</a> in Unity, and still building the place where <a href="game-vn.html" style="text-decoration:underline">abandoned ideas go</a>. <span class="todo">Add one line about what you're reading, playing, or peeling at the moment. This line is the one you'll update most, so keep it short.</span></div>
+  <div class="say wob"><span class="who">Bandi</span>Finishing <a href="game-virus.html" style="text-decoration:underline">Error 404</a> in Unity, and still building the place where <a href="game-vn.html" style="text-decoration:underline">abandoned ideas go</a>. Next up, a game about <a href="game-walk.html" style="text-decoration:underline">walking home</a>.</div>
 </div>
 
 <h2 class="chapter">Off screen</h2>
@@ -180,7 +165,7 @@ html{scroll-padding-top:56px}
 
 <h2 class="chapter">Say hi</h2>
 <div class="line">
-  <div class="say wob"><span class="who">Bandi</span>Email is best: <a href="mailto:bandi.li@outlook.com" style="text-decoration:underline">bandi.li@outlook.com</a> <span class="todo">· itch.io / GitHub link if you want one</span>
+  <div class="say wob"><span class="who">Bandi</span>Email is best: <a href="mailto:bandi.li@outlook.com" style="text-decoration:underline">bandi.li@outlook.com</a>
     <div class="contact">
       <a class="btn wob" href="resume.pdf" target="_blank">Résumé (PDF) →</a>
     </div>
