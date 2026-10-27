@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>About — Bandi</title>
+<link rel="icon" type="image/svg+xml" href="img/seal.svg">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&family=Patrick+Hand&display=swap">
 <style>
 :root{--paper:#FFFFFF;--fill:#EBEBEB;--ink:#000000;--mute:#7A7A7A;--dim:#B5B5B5;
@@ -116,6 +117,20 @@ html{scroll-padding-top:56px}
 .contact{display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin-top:8px}
 @media (max-width:820px){.line.with{grid-template-columns:1fr}}
 .page .line{grid-template-columns:1fr;max-width:62ch}
+/* ink works + seal */
+.ink{display:flex;flex-wrap:wrap;gap:14px;margin:22px 0 6px;align-items:flex-start}
+.ink figure{margin:0;flex:0 1 auto}
+.ink img{height:172px;width:auto;max-width:100%;border:2px solid var(--ink);background:#fff}
+.ink figcaption{font-family:var(--hand);font-size:14px;color:var(--mute);margin-top:6px;line-height:1.2;width:0;min-width:100%}
+.sealrow{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,2fr);gap:24px;align-items:center;margin:30px 0 22px}
+.sealfig{margin:0;background:var(--fill);border:2px solid var(--ink);padding:clamp(10px,1.6vw,22px);display:flex;gap:18px;align-items:center;justify-content:center}
+.sealfig img{border:0}
+.sealfig .sig{height:220px;width:auto;border:2px solid var(--ink)}
+.sealfig .big{width:150px;height:150px}
+.sealfig figcaption{font-family:var(--hand);color:var(--mute);font-size:14px;width:100%;text-align:center}
+.sealfig{flex-wrap:wrap}
+@media (max-width:820px){.sealrow{grid-template-columns:1fr}.ink img{height:120px}}
+footer .stamp{width:22px;height:22px;vertical-align:-6px;margin-left:8px;display:inline-block}
 </style>
 </head>
 <body>
@@ -160,6 +175,23 @@ html{scroll-padding-top:56px}
 <div class="line">
   <div class="say wob"><span class="who">Bandi</span>Off screen I play badminton, which I've kept up for three years, and kendo, which is also a game of rules. My parents suggested kendo for years and I said no; I started about a year ago and now I don't skip it.</div>
   <div class="say wob" style="margin-top:10px"><span class="who">Bandi</span>I studied East Asian ink painting for three or four years, up to Grade 10. That's where the black lines on this site come from.</div>
+</div>
+<div class="ink">
+  <figure><a href="img/ink_lotus.jpg" target="_blank"><img src="img/ink_lotus.jpg" alt="Ink painting of a lotus flower and leaves"></a><figcaption>lotus · 2025</figcaption></figure>
+  <figure><a href="img/ink_bamboo.jpg" target="_blank"><img src="img/ink_bamboo.jpg" alt="Ink painting of bamboo"></a><figcaption>bamboo · 2025</figcaption></figure>
+  <figure><a href="img/ink_mum.jpg" target="_blank"><img src="img/ink_mum.jpg" alt="Ink painting of yellow chrysanthemums"></a><figcaption>chrysanthemums · 2025</figcaption></figure>
+  <figure><a href="img/ink_calli_pond.jpg" target="_blank"><img src="img/ink_calli_pond.jpg" alt="Clerical-script calligraphy of the poem Little Pond by Yang Wanli"></a><figcaption>小池 by Yang Wanli · clerical script · 2022</figcaption></figure>
+  <figure><a href="img/ink_calli_snow.jpg" target="_blank"><img src="img/ink_calli_snow.jpg" alt="Clerical-script calligraphy: chasing dreams on ice and snow, toward the future"></a><figcaption>逐夢冰雪 向未來 · clerical script · 2021</figcaption></figure>
+</div>
+<div class="sealrow">
+  <div class="say wob"><span class="who">Bandi</span>The red stamp under my name on the paintings is my seal, and I carved it myself. Instead of a character, I cut a Minecraft block into it: my favourite game, pressed onto the oldest kind of picture I know how to make. Carving a seal and skinning a <a href="sticks.html" style="text-decoration:underline">stick</a> turn out to be the same job. A knife, one layer at a time.</div>
+  <figure class="sealfig wob">
+    <img class="sig" src="img/ink_signature.jpg" alt="Signature 乙巳 伴笛畫 with the red seal below it">
+    <img class="big" src="img/seal.png" alt="The seal impression: a Minecraft block cut into red">
+    <figcaption>乙巳 伴笛畫 — signed, then stamped with a block</figcaption>
+  </figure>
+</div>
+<div class="line">
   <div class="say wob" style="margin-top:10px"><span class="who">Bandi</span>Lately I shelve books at the public library near home, and I like it more than I expected. Sorting things into their places turns out to be the thing I do everywhere.</div>
 </div>
 
@@ -177,6 +209,6 @@ html{scroll-padding-top:56px}
 
 </div>
 
-<footer><span>bandithefirefly.com</span><span>반디 · firefly</span></footer>
+<footer><span>bandithefirefly.com</span><span>반디 · firefly<img class="stamp" src="img/seal.png" alt=""></span></footer>
 </body>
 </html>
