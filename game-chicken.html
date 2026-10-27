@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chicken Population in Minecraft</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&family=Patrick+Hand&display=swap">
+<style>
+:root{--paper:#FFFFFF;--fill:#EBEBEB;--ink:#000000;--mute:#7A7A7A;--dim:#B5B5B5;
+  --ui:"Source Sans 3","Noto Sans","Helvetica Neue",Arial,sans-serif;--hand:"Patrick Hand","Comic Sans MS",cursive}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--ui);font-size:17px;line-height:1.5}
+a{color:inherit;text-decoration:none}
+a:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+img{display:block;max-width:100%}
+.wob{position:relative;border-color:transparent!important}
+.wob::before{content:"";position:absolute;inset:-2px;border:2px solid currentColor;filter:url(#wobble);pointer-events:none}
+.box{background:var(--fill);border:2px solid var(--ink)}
+
+/* ---- top: the VN scene ---- */
+.scene{position:relative;background:#000;color:#fff;overflow:hidden}
+.scene img{width:100%;height:auto}
+.scene .dlg{position:relative;padding:12px 2% 3%;background:#000;margin-top:-2%}
+.namebox{display:inline-block;background:var(--fill);color:var(--ink);border:2px solid var(--ink);padding:6px 40px;font-size:clamp(16px,1.8vw,26px);margin:0 0 -2px 6%;position:relative;z-index:2}
+.textbox{background:var(--fill);color:var(--ink);border:2px solid var(--ink);padding:clamp(14px,2.4vw,32px) 20% clamp(20px,3vw,40px);font-size:clamp(15px,1.7vw,24px);line-height:1.45;min-height:0}
+.textbox b{font-weight:700}
+.vnmenu{display:flex;gap:clamp(10px,2.4vw,34px);justify-content:center;flex-wrap:wrap;padding:6px 0 10px;font-size:clamp(11px,1.15vw,16px);color:var(--dim)}
+.vnmenu a[aria-current]{color:#fff}
+.vnmenu a:hover{color:#fff}
+
+/* ---- hallway nav ---- */
+.hall{position:relative;border-top:2px solid var(--ink);border-bottom:2px solid var(--ink)}
+.hall img{width:100%}
+.hot{position:absolute;display:block}
+.hot .e{position:absolute;left:50%;top:-14%;transform:translateX(-50%);width:clamp(34px,5vw,64px);height:clamp(34px,5vw,64px);border-radius:50%;background:#fff;border:3px solid #8a8a8a;display:grid;place-items:center;font-weight:700;font-size:clamp(16px,2.4vw,30px);opacity:0;transition:opacity .15s}
+.hot .e::after{content:"";position:absolute;left:30%;bottom:-16px;border:9px solid transparent;border-top-color:#8a8a8a}
+.hot .lbl{position:absolute;left:50%;bottom:-10%;transform:translateX(-50%);font-family:var(--hand);font-size:clamp(14px,1.8vw,24px);background:#fff;border:2px solid var(--ink);padding:2px 12px;white-space:nowrap}
+.hot:hover .e,.hot:focus-visible .e{opacity:1}
+.hint{position:absolute;left:2%;top:3%;font-family:var(--hand);font-size:clamp(13px,1.5vw,20px);color:var(--mute)}
+
+/* ---- rooms ---- */
+.room{padding:clamp(28px,5vw,72px) clamp(20px,5vw,72px);border-bottom:2px solid var(--ink)}
+.room h2{font-family:var(--hand);font-weight:400;font-size:clamp(28px,4vw,52px);margin:0 0 18px;line-height:1}
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(20px,4vw,56px);align-items:center}
+.frame{background:var(--fill);border:2px solid var(--ink);padding:clamp(10px,1.6vw,22px)}
+.frame img{width:100%;aspect-ratio:1;object-fit:cover;border:2px solid var(--ink)}
+.frame figcaption{font-family:var(--hand);margin-top:8px;color:var(--mute)}
+.say{background:var(--fill);border:2px solid var(--ink);padding:18px 22px;font-size:clamp(15px,1.4vw,19px);line-height:1.5;position:relative;margin-top:14px}
+.say .who{position:absolute;top:-16px;left:18px;background:var(--fill);border:2px solid var(--ink);padding:0 14px;font-size:14px}
+.btn{display:inline-block;margin-top:16px;border:2px solid var(--ink);background:#fff;padding:8px 18px;font-family:var(--hand);font-size:18px}
+.btn:hover{background:var(--fill)}
+
+/* lockers = games */
+.lockers{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:0;border:2px solid var(--ink);background:#fff}
+.locker{border-right:2px solid var(--ink);padding:18px 18px 22px;min-height:240px;display:flex;flex-direction:column;gap:6px;background:var(--fill)}
+.locker:last-child{border-right:0}
+.locker .num{font-family:var(--hand);font-size:22px}
+.locker h3{margin:6px 0 0;font-size:17px;font-weight:700}
+.locker .meta{font-size:12.5px;color:var(--mute)}
+.locker p{margin:4px 0 0;font-size:14px}
+.locker .tag{margin-top:auto;font-family:var(--hand);font-size:15px;border:2px solid var(--ink);background:#fff;padding:2px 10px;align-self:flex-start}
+
+/* seeds = sky */
+.sky{position:relative;background:#000;color:#fff;border-bottom:2px solid var(--ink)}
+.sky img{width:100%;opacity:.95}
+.sky .over{position:absolute;inset:0;display:flex;align-items:flex-start;padding:clamp(20px,5vw,72px)}
+.sky .over > div{background:rgba(0,0,0,.82);padding:18px 22px 22px;max-width:56ch}
+.sky h2{font-family:var(--hand);font-weight:400;font-size:clamp(28px,4vw,52px);margin:0 0 10px;line-height:1}
+.sky p{max-width:48ch;color:#ddd;margin:0}
+.sky .btn{background:#000;color:#fff;border-color:#fff}
+
+/* poster = about */
+.poster{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(20px,4vw,56px);align-items:center}
+.poster img{border:2px solid var(--ink)}
+footer{padding:14px clamp(20px,5vw,72px) 26px;color:var(--dim);font-size:12px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+@media (max-width:820px){.two,.poster{grid-template-columns:1fr}.textbox{padding-inline:6%}.namebox{margin-left:3%}}
+</style><style>
+.page{max-width:1100px;margin:0 auto;padding:0 clamp(16px,4vw,40px)}
+.scene .textbox{padding-inline:12%}
+.scene video{width:100%;display:block;background:#000}
+.spec{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:0;border:2px solid var(--ink);background:var(--fill);margin:26px 0}
+.spec div{padding:14px 16px;border-right:2px solid var(--ink)}
+.spec div:last-child{border-right:0}
+.spec .k{font-family:var(--hand);font-size:15px;color:var(--mute)}
+.spec .v{font-weight:700;font-size:15px}
+.chapter{font-family:var(--hand);font-size:clamp(22px,3vw,34px);margin:40px 0 4px;display:flex;align-items:center;gap:14px}
+.chapter::after{content:"";flex:1;height:2px;background:var(--ink)}
+.shots{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-top:22px}
+.frame img.wide{aspect-ratio:16/9;object-fit:cover}
+.line{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,2fr);gap:24px;align-items:start;margin:22px 0}
+.quote{border:2px solid var(--ink);background:#fff;padding:18px 22px;font-family:var(--hand);font-size:19px;line-height:1.4}
+.quote small{display:block;margin-top:10px;font-family:var(--ui);font-size:12px;color:var(--mute)}
+.say .next{position:absolute;right:12px;bottom:6px;font-size:12px;color:var(--mute)}
+@media (max-width:820px){.line{grid-template-columns:1fr}}
+</style>
+<style>
+.topnav{position:fixed;top:0;left:0;right:0;z-index:50;background:#000;display:flex;justify-content:center;gap:clamp(14px,3vw,40px);padding:12px 16px;font-size:clamp(13px,1.2vw,17px);color:var(--dim);border-bottom:2px solid #000}
+.topnav a[aria-current]{color:#fff;font-weight:700}
+.topnav a:hover{color:#fff}
+body{padding-top:48px}
+html{scroll-padding-top:56px}
+</style>
+<style>
+/* large screens: cap the hero image/video height, centered, never cropped */
+.scene>img,.scene>video{display:block;width:auto!important;max-width:100%;max-height:62vh;height:auto;margin:0 auto;object-fit:contain}
+.scene .dlg{max-width:1180px;margin-left:auto;margin-right:auto;background:transparent}
+@media (min-width:1400px){.scene>img,.scene>video{max-height:56vh}}
+@media (max-width:820px){.scene>img,.scene>video{width:100%!important;max-height:none}}
+
+/* other lockers: jump straight to another game */
+.more{display:grid;grid-template-columns:repeat(auto-fit,minmax(118px,1fr));gap:8px;padding:8px;border:2px solid var(--ink);background:#fff;margin-top:14px}
+.more a{display:block;border:2px solid var(--ink);background:var(--fill);color:var(--ink);text-decoration:none}
+.more img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;border-bottom:2px solid var(--ink);filter:grayscale(1) contrast(1.05);transition:filter .2s}
+.more a:hover img{filter:none}
+.more span{display:block;padding:6px 10px 8px;font-size:13px;line-height:1.3}
+.more b{font-family:var(--hand);font-weight:400;font-size:16px;margin-right:6px}
+.more a.here{pointer-events:none;background:#000;color:#fff}
+.more a.here img{opacity:.35}
+.more a.here span::after{content:" · you are here";font-family:var(--hand);color:var(--dim)}
+@media (max-width:640px){.more{grid-template-columns:1fr 1fr}}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:0;border:2px solid var(--ink);background:#fff;margin:14px 0 0}
+.steps div{padding:12px 16px 14px;border-right:2px solid var(--ink);background:var(--fill)}
+.steps div:last-child{border-right:0}
+.steps .k{font-family:var(--hand);font-size:17px;display:block;margin-bottom:4px}
+.steps p{margin:0;font-size:14px}
+.arrow{font-family:var(--hand);font-size:14px;color:var(--mute);margin:6px 0 0}
+.shots figcaption b{font-family:var(--hand);font-weight:400;font-size:16px;color:var(--ink);margin-right:6px}
+@media (max-width:640px){.steps{grid-template-columns:1fr 1fr}.steps div{border-right:0;border-bottom:2px solid var(--ink)}}
+.shots.code{grid-template-columns:1fr 1fr}
+@media (max-width:640px){.shots.code{grid-template-columns:1fr}}
+.big{font-family:var(--hand);font-size:clamp(40px,7vw,84px);line-height:1;margin:18px 0 4px}.big small{font-size:.35em;color:var(--mute);margin:0 10px}
+.formula{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:15px;background:#fff;border:2px solid var(--ink);padding:12px 16px;margin-top:10px;display:inline-block}
+</style>
+</head>
+<body>
+<nav class="topnav">
+      <a href="index.html">Home</a><a href="sticks.html">Sticks</a><a href="index.html#games" aria-current="page">Games</a><a href="seeds.html">Seeds</a><a href="about.html">About</a>
+    </nav>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <filter id="wobble"><feTurbulence type="fractalNoise" baseFrequency="0.012" numOctaves="2" seed="7" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="4"/></filter>
+</svg>
+
+<section class="scene" style="background:#000">
+  <video controls playsinline poster="img/chicken_poster.jpg" src="video/chicken.mp4"></video>
+  <div class="dlg">
+    <div class="namebox wob">Bandi</div>
+    <div class="textbox wob">If I have one chicken in Minecraft, and I only use the eggs the chickens lay to make more chickens, how long until I have a hundred? That's the question I chose for my IB maths investigation: hatching probabilities, a Python simulation, and an automated machine in the game to test the prediction. <b>Still in progress.</b></div>
+  </div>
+</section>
+<div class="page">
+<div class="spec wob">
+  <div><span class="k">when</span><br><span class="v">2026</span></div>
+  <div><span class="k">what</span><br><span class="v">IB Math AA internal assessment</span></div>
+  <div><span class="k">tools</span><br><span class="v">Python · Minecraft</span></div>
+  <div><span class="k">team</span><br><span class="v">solo</span></div>
+  <div><span class="k">my part</span><br><span class="v">model · simulation · build</span></div>
+  <div><span class="k">status</span><br><span class="v">in progress</span></div>
+</div>
+
+<h2 class="chapter">The question</h2>
+<div class="line"><div>
+<div class="say wob"><span class="who">Bandi</span>Minecraft turns a familiar game mechanic into a population-growth problem. More adult chickens produce more eggs, but hatching is random and chicks need time to mature. So: start with one adult, throw every egg it lays, and keep going. How long until there are a hundred?</div>
+<div class="big">1 <small>to</small> 100</div>
+<p style="font-family:var(--hand);color:var(--mute);margin:0">growth of a population through one adult</p>
+</div>
+<figure class="frame wob" style="margin:22px 0 0"><img class="wide" src="img/chicken_debug.jpg" alt="Minecraft screenshot of the egg machine with the debug overlay open"><figcaption>inside the machine, debug screen on</figcaption></figure>
+</div>
+
+<h2 class="chapter">The rules that drive growth</h2>
+<div class="steps wob">
+  <div><span class="k">5–10 min</span><p><b>Egg-laying interval.</b> Adults lay eggs at random intervals; 7.5 minutes is used as the average.</p></div>
+  <div><span class="k">1 in 8</span><p><b>Chance of hatching.</b> A successful hatch usually creates one chick; rarely, it creates four.</p></div>
+  <div><span class="k">20 min</span><p><b>Maturation delay.</b> A chick cannot lay eggs until it becomes an adult.</p></div>
+  <div><span class="k">no deaths</span><p><b>Model assumptions.</b> Chicks mature naturally and every egg is thrown the moment it's laid.</p></div>
+</div>
+
+<h2 class="chapter">Probability and population growth</h2>
+<div class="line"><div>
+<div class="say wob"><span class="who">Bandi</span>The model combines the expected number of chicks from each egg with the time those chicks need to mature. Adults and babies are kept separate, because they play different roles in the growth.</div>
+<div class="say wob" style="margin-top:10px"><span class="who">Bandi</span>A successful hatch has a 1/32 chance of producing four chicks instead of one. Combining the outcomes:<br>
+<span class="formula">E = (31 + 4) / 256 = 35/256 ≈ 0.137 chicks per egg</span><br>
+With one egg every 7.5 minutes, that's an expected 7/384 chicks per adult per minute.</div>
+<div class="say wob" style="margin-top:10px"><span class="who">Bandi</span>Two groups are tracked. Adults lay eggs; babies join the adult population after 20 minutes. A short time step updates both groups until their combined population reaches 100.</div>
+</div>
+<figure class="frame wob" style="margin:22px 0 0"><img class="wide" src="img/chicken_chart.jpg" alt="Line chart: total and adult chicken population rising from 1 to 100 over about 500 simulated minutes" style="aspect-ratio:auto"><figcaption>draft simulation output — average total and adult population over simulated minutes</figcaption></figure>
+</div>
+
+<h2 class="chapter">Testing the model in Minecraft</h2>
+<div class="line"><div>
+<div class="say wob"><span class="who">Bandi</span>An automated setup collects and throws eggs continuously, so the flock grows without me. Faster game time makes repeated trials practical while keeping the same growth rules: <b>/tick rate 1200</b> instead of the regular 20, so one real second is one game minute, sixty times faster.</div>
+</div><div></div></div>
+<div class="shots">
+  <figure class="frame wob" style="margin:0"><img class="wide" src="img/chicken_rig1.jpg" alt="The egg machine tower on a grass field, front view"><figcaption>the machine</figcaption></figure>
+  <figure class="frame wob" style="margin:0"><img class="wide" src="img/chicken_rig2.jpg" alt="The egg machine, side view"><figcaption>hoppers collect, a dispenser throws</figcaption></figure>
+  <figure class="frame wob" style="margin:0"><img class="wide" src="img/chicken_rig3.jpg" alt="The egg machine, rear view"><figcaption>from the back</figcaption></figure>
+</div>
+<div class="steps wob" style="margin-top:22px">
+  <div><span class="k">five planned trials</span><p>Reset to one adult chicken each time. Let the machine throw the eggs the adult lays until the total population reaches 100.</p></div>
+  <div><span class="k">record the evidence</span><p>Record the population of chickens until it reaches 100. Convert accelerated time back to game minutes.</p></div>
+  <div><span class="k">compare and refine</span><p>Compare the model with the trial mean and spread. Check for errors and analyse potential improvements.</p></div>
+</div>
+
+<h2 class="chapter">Why it's here</h2>
+<div class="line"><div>
+<div class="say wob"><span class="who">Bandi</span>It isn't a game I made. It's my maths coursework, and it's not finished yet. It's here because I got to pick the topic, and I picked a game. Minecraft's chickens follow rules that are published and fixed, which makes them a better population model than most things in real life, and an experiment that would take days on a farm runs in a few minutes of game time. The same habit as everywhere else on this site: find the rules, then play by them.</div>
+</div><div></div></div>
+
+<h2 class="chapter">Other lockers</h2>
+<div class="more wob">
+  <a href="game-virus.html"><img src="img/thumbs/error404_video.jpg" alt=""><span><b>01</b>Error 404 · videogame</span></a>
+  <a href="game-board.html"><img src="img/thumbs/error404_table.jpg" alt=""><span><b>02</b>Error 404 · tabletop</span></a>
+  <a href="game-chicken.html" class="here"><img src="img/thumbs/chicken.jpg" alt=""><span><b>03</b>Chicken Population · research</span></a>
+  <a href="game-vn.html"><img src="img/thumbs/vn.jpg" alt=""><span><b>04</b>Unfinished · visual novel</span></a>
+  <a href="game-shooter.html"><img src="img/thumbs/shooter.jpg" alt=""><span><b>05</b>Unreal Engine Shooter</span></a>
+  <a href="game-minigame.html"><img src="img/thumbs/minigame.jpg" alt=""><span><b>06</b>Morning Routine</span></a>
+  <a href="game-assets.html"><img src="img/thumbs/tileset.jpg" alt=""><span><b>07</b>Tower Defense Tileset</span></a>
+</div>
+<div style="margin:36px 0 10px"><a class="btn wob" href="index.html#games">← back to the lockers</a></div>
+</div>
+<footer><span>bandithefirefly.com</span><span>반디 · firefly</span></footer>
+</body>
+</html>
